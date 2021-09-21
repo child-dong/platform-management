@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'swiper/swiper.min.css';
 import './style/style.scss'
 import Router from './plugins/router'
 import installElementPlus from './plugins/element'
