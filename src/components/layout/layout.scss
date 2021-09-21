@@ -1,0 +1,27 @@
+.el-container{
+  position: relative;
+  .el-main{
+    margin-top: 66px;
+    padding: 28px;
+  }
+  .el-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 28px;
+    line-height: 66px;
+    height: 66px;
+    background: #fff;
+    .module-title{
+      font-size: 24px;
+    }
+  }
+  .el-aside {
+    width: 244px;
+    height: 1080px;
+    .el-menu{
+      height: 100%;
+    }
+  }
+}
