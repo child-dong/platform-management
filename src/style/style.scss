@@ -2,8 +2,156 @@
   margin: 0;
   padding: 0;
 }
-body{
+html, body{
   background: #F5F5F6;
   width: 1900px;
-  height: 1080px;
+  height: 100%;
+}
+.box-search-card{
+  .el-card__body{
+    padding: 9px 28px;
+    .margin{
+      display: inline-block;
+      width: 38px;
+    }
+    .search-label{
+      font-size: 24px;
+      color: #363636;
+      line-height: 46px;
+    }
+  }
+}
+.el-container{
+  .el-main{
+    .el-input{
+      line-height: 46px;
+      .el-input__inner{
+        width: 146px;
+        height: 46px;
+        line-height: 46px;
+        border-radius: 5px;
+        font-size: 24px;
+        color: #788699;
+        border-color: #969696;
+        &:focus{
+          border-color: #363636;
+        }
+      }
+      &.is-focus{
+        .el-input__inner{
+          border-color: #363636;
+        }
+      }
+    }
+    .el-range-editor{
+      width: 360px;
+      &.el-input__inner{
+        height: 46px;
+        line-height: 46px;
+        padding: 6px 20px;
+        border-color: #969696;
+        vertical-align: top;
+        border-radius: 5px;
+      }
+      &.is-active{
+        border-color: #363636;
+        &:hover{
+          border-color: #363636;
+        }
+      }
+      .el-range__icon{
+        width: 20px;
+      }
+      .el-range-input{
+        font-size: 24px;
+        color: #788699;
+      }
+      .el-range-separator{
+        font-size: 24px;
+        color: #969696;
+      }
+    }
+    .btn-box{
+      margin-top: 29px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      .el-input{
+        width: 391px;
+        .el-input__inner{
+          margin-right: 0;
+          width: 391px;
+          height: 64px;
+          border-color: rgba(75, 142, 234, 1);
+          line-height: 64px;
+          background: #EEF1F3;
+          border-right: none;
+        }
+      }
+      .inp-search{
+        position: relative;
+        left: -3px;
+        width: 120px;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        font-size: 28px;
+        color: #FFFFFF;
+        background: #4B8EEA;
+        border-radius: 0 6px 6px 0;
+        cursor: pointer;
+      }
+      .el-button{
+        position: absolute;
+        right: 0;
+        padding-top: 6px;
+        width: 120px;
+        height: 46px;
+        font-size: 24px;
+        line-height: 33px;
+        background: #4B8EEA;
+      }
+    }
+    .table-box{
+      margin-top: 28px;
+      height: 780px;
+      background: #FFFFFF;
+      overflow: auto;
+      border-radius: 6px 6px 0 0;
+    }
+    .el-table{
+      tr{
+        height: 66px;
+      }
+      th{
+        background: #788699;
+        font-size: 28px;
+        color: #FFFFFF;
+        .cell{
+          line-height: 40px;
+        }
+      }
+      td{
+        padding-top: 28px;
+        padding-bottom: 28px;
+        font-size: 24px;
+        color: #363636;
+        .cell{
+          line-height: 33px;
+        }
+      }
+    }
+  }
+}
+.el-select-dropdown__item.selected{
+  color: #363636;
+}
+.el-select-dropdown__item{
+  line-height: 53px;
+  height: 53px;
+  font-size: 24px;
+  color: #969696;
+}
+.el-button--primary{
+  background: #4B8EEA;
 }

@@ -1,14 +1,9 @@
-import axios from 'axios';
 import {formatDate} from '../../../plugins/date.js'
-import { ElConfigProvider } from 'element-plus'
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 export default {
     components: {
-        [ElConfigProvider.name]: ElConfigProvider,
     },
     data() {
         return {
-            locale: zhCn,
             allPeople: {},
             newPeople: [],
             postData: [],
@@ -21,17 +16,26 @@ export default {
     methods: {
         getInitData() {
             // 总人数
-            axios.get('http://1.117.200.111:7000/backstage/api/home/registerTotalNum').then((response) => {
-                this.allPeople = response.data.data;
+            this.$axios({
+                url: '/backstage/api/home/registerTotalNum',
+                method: 'get',
+            }).then(response => {
+                this.allPeople = response.data;
             });
             // 新注册用户
-            axios.get('http://1.117.200.111:7000/backstage/api/home/queryNewUser').then((response) => {
-                this.newPeople = response.data.data;
+            this.$axios({
+                url: '/backstage/api/home/queryNewUser',
+                method: 'get',
+            }).then(response => {
+                this.newPeople = response.data;
             });
             // 发帖占比
-            axios.get('http://1.117.200.111:7000/backstage/api/home/releaseNumber').then((response) => {
+            this.$axios({
+               url: '/backstage/api/home/releaseNumber',
+                method: 'get',
+            }).then(response => {
                 this.postData = [];
-                for (let item of response.data.data) {
+                for (let item of response.data) {
                     if (item.type !== '总数') {
                         this.postData.push({value: item.count, name: item.type})
                     } else {
@@ -39,7 +43,7 @@ export default {
                     }
                 }
                 for (let item of this.postData) {
-                   item.percent = (item.value / this.postAllData).toFixed(2) * 100 + "%"
+                    item.percent = (item.value / this.postAllData).toFixed(2) * 100 + "%"
                 }
                 this.makeChart1(this.postData);
             });
@@ -48,25 +52,29 @@ export default {
         },
         // 在线人数
         getOnline() {
-            axios.get(`http://1.117.200.111:7000/backstage/api/home/queryOnlineNumber?dayTime=${formatDate(this.time1, 'YYYY-MM-DD')}`).then((response) => {
-                console.log(response.data);
+            this.$axios({
+                url: `/backstage/api/home/queryOnlineNumber?dayTime=${formatDate(this.time1, 'YYYY-MM-DD')}`,
+                method: 'get',
+            }).then(response => {
                 let data = [];
                 let name = [];
-                for (let item of response.data.data) {
+                for (let item of response.data) {
                     data.push({value: item.onlineNum, name: item.time});
                     name.push(item.time)
                 }
                 this.makeChart2(data, name);
-            })
+            });
         },
         // 注册、发帖时间
         getTimeTrend() {
-            axios.get(`http://1.117.200.111:7000/backstage/api/home/monthTotalNumber?monthTime=${formatDate(this.time2, 'YYYY-MM')}-01`).then((response) => {
-                console.log(response.data);
+            this.$axios({
+                url: `/backstage/api/home/monthTotalNumber?monthTime=${formatDate(this.time2, 'YYYY-MM')}-01`,
+                method: 'get',
+            }).then(response => {
                 let data = [];
                 let data1 = [];
                 let name = [];
-                for (let item of response.data.data) {
+                for (let item of response.data) {
                     const time = item.time.substr(item.time.length - 2, 2).replace(0, '');
                     data.push({value: item.userTotal, name: time});
                     item.total = item.careerPostTotal + item.talenRecruitmentTotal + item.waresRepairTotal + item.waresSellTotal + item.waresWanyBuyTotal;
@@ -74,7 +82,7 @@ export default {
                     name.push(time)
                 }
                 this.makeChart3(data, data1, name);
-            })
+            });
         },
         // 占比
         makeChart1(data) {

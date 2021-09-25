@@ -1,15 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import installElementPlus from './plugins/element'
 import 'swiper/swiper.min.css';
 import './style/style.scss'
 import Router from './plugins/router'
-import installElementPlus from './plugins/element'
 import * as echarts from 'echarts'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import axios from './plugins/axios'
 
-const app = createApp(App)
+const app = createApp(App);
 installElementPlus(app);
-app.use(Router, VueAxios, axios);
-app.mount('#app')
-app.config.globalProperties.$echarts = echarts
+app.use(Router);
+app.mount('#app');
+app.config.globalProperties.$echarts = echarts;
+app.config.globalProperties.$axios=axios;

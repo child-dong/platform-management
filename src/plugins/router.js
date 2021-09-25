@@ -3,6 +3,10 @@ import Login from './../components/login/login.vue'
 import Layout from '../components/layout/layout.vue'
 import Homepage from '../components/page-modules/homepage/homepage.vue'
 import ImgMagSwiper from '../components/page-modules/img-mag-swiper/img-mag-swiper.vue'
+import ImgMagLibrary from '../components/page-modules/img-mag-library/img-mag-library.vue'
+import UserMag from '../components/page-modules/user-mag/user-mag.vue'
+import PostMag from '../components/page-modules/post-mag/post-mag.vue'
+import CncSystem from '../components/page-modules/cnc-system/cnc-system.vue'
 
 const routes = [
     {
@@ -24,6 +28,30 @@ const routes = [
                 // UserProfile 会被渲染在 User 的 <router-view> 中
                 path: 'img-mag-swiper',
                 component: ImgMagSwiper
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'img-mag-library',
+                component: ImgMagLibrary
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'user-mag',
+                component: UserMag
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'post-mag',
+                component: PostMag
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'cnc-system',
+                component: CncSystem
             }
         ]
     }

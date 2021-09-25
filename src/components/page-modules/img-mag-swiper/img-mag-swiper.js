@@ -26,6 +26,12 @@ export default {
         }
     },
     methods: {
+        handleAvatarSuccess(res, file) {
+            console.log(res,file)
+        },
+        uploadOwn(file) {
+            console.log('自定义上传', file);
+        }
     },
 
     mounted() {
