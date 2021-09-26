@@ -35,7 +35,7 @@
           </div>
           <div class="echart-legend-layout">
             <div class="echart-legend">
-              <div class="item" v-for="(item, index) in postData"  :key="item" :style="{color: color[index]}">
+              <div class="item" v-for="(item, index) in postData" :key="item" :style="{color: color[index]}">
                 <span class="sp1" :style="{background: color[index]}"></span>
                 <span class="sp2">{{item.name}}</span>
                 <span class="sp3">{{item.percent}}</span>

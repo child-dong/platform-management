@@ -1,7 +1,7 @@
 <template>
   <div class="login">
       <div class="system-logo">
-        <img src="" alt="" class="icon-logo">
+        <img src="../../assets/login-logo.png" alt="" class="icon-logo">
         <p class="system-name">钣金联盟平台管理系统</p>
       </div>
       <div class="split-line"></div>

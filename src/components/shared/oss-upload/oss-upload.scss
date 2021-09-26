@@ -1,0 +1,27 @@
+.library{
+  .line-common{
+    margin: 0;
+    width: 1620px;
+    height: 1045px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    .line-title{
+      margin: 17px 0 0 28px;
+      display: flex;
+      align-items: center;
+      .title-symbol{
+        width: 13px;
+        height: 38px;
+        background: rgba(75, 142, 234, 1);
+      }
+      .title{
+        margin-left: 20px;
+        font-size: 30px;
+        color: #363636;
+        line-height: 42px;
+      }
+    }
+  }
+}

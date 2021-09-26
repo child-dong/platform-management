@@ -24,14 +24,16 @@
   </div>
   <div class="table-box">
     <el-table :data="tableData" style="width: 100%" max-height="680">
-      <el-table-column align="center" prop="date" label="日期">
+      <el-table-column align="center" prop="photo" label="用户">
       </el-table-column>
-      <el-table-column align="center" prop="name" label="姓名"> </el-table-column>
-      <el-table-column align="center" prop="province" label="省份">
+      <el-table-column align="center" prop="username" label=""> </el-table-column>
+      <el-table-column align="center" prop="phone" label="手机">
       </el-table-column>
-      <el-table-column align="center" prop="city" label="市区"> </el-table-column>
-      <el-table-column align="center" prop="address" label="地址"> </el-table-column>
-      <el-table-column align="center" prop="zip" label="邮编"> </el-table-column>
+      <el-table-column align="center" prop="isAuthEnt" label="个人认证"> </el-table-column>
+      <el-table-column align="center" prop="isAuthPer" label="企业认证"> </el-table-column>
+      <el-table-column align="center" prop="isWaresRepair" label="维修认证"> </el-table-column>
+      <el-table-column align="center" prop="createTime" label="注册时间"> </el-table-column>
+      <el-table-column align="center" prop="fullName" label="真实姓名"> </el-table-column>
       <el-table-column align="center" label="操作">
         <template #default="scope">
           <el-button
@@ -44,6 +46,15 @@
         </template>
       </el-table-column>
     </el-table>
+<!--    <template>-->
+<!--      <el-pagination background :current-page="pageNum" :page-size="pageSize" layout="prev, pager, next" :total="100">-->
+<!--      </el-pagination>-->
+<!--    </template>-->
+    <template v-if="total !== 0">
+      <el-pagination background layout="prev, pager, next" :total="total" :current-change="onUpdate">
+      </el-pagination>
+    </template>
+
   </div>
 </template>
 <script src="./user-mag.js"></script>

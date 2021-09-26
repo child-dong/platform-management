@@ -6,73 +6,35 @@ export default {
             type: '',
             time: '',
             content: '',
+            pageNum: 1,
+            pageSize: 10,
+            total: 100,
             tableData: [
-                {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
-                {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    province: '上海',
-                    city: '普陀区',
-                    address: '上海市普陀区金沙江路 1518 弄',
-                    zip: 200333,
-                },
             ]
         }
     },
     methods: {
         deleteRow(index, rows) {
             rows.splice(index, 1)
+        },
+        // 获取列表数据
+        getTableData() {
+            this.$axios({
+                url: `/backstage/api/user/list/${this.pageNum}/${this.pageSize}`,
+                method: 'get',
+            }).then(response => {
+                console.log(response);
+                this.tableData = response.data.records;
+            },(error) => {
+                console.log(error);
+            });
+        },
+        onUpdate(e) {
+            console.log(e)
         }
     },
 
     mounted() {
-
+        this.getTableData();
     }
 }
