@@ -25,6 +25,9 @@
   <div class="table-box">
     <el-table :data="tableData" style="width: 100%" max-height="680">
       <el-table-column align="center" prop="photo" label="用户">
+        <template #default="scope">
+          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
+        </template>
       </el-table-column>
       <el-table-column align="center" prop="username" label=""> </el-table-column>
       <el-table-column align="center" prop="phone" label="手机">
@@ -37,21 +40,25 @@
       <el-table-column align="center" label="操作">
         <template #default="scope">
           <el-button
-                  @click.prevent="deleteRow(scope.$index, tableData)"
+                  @click.prevent="disableRow(scope.$index, tableData)"
                   type="text"
                   size="small"
           >
-            移除
+            可用
+          </el-button>
+          <br>
+          <el-button
+                  @click.prevent="disableRow(scope.$index, tableData)"
+                  type="text"
+                  size="small"
+          >
+            锁定
           </el-button>
         </template>
       </el-table-column>
     </el-table>
-<!--    <template>-->
-<!--      <el-pagination background :current-page="pageNum" :page-size="pageSize" layout="prev, pager, next" :total="100">-->
-<!--      </el-pagination>-->
-<!--    </template>-->
     <template v-if="total !== 0">
-      <el-pagination background layout="prev, pager, next" :total="total" :current-change="onUpdate">
+      <el-pagination background layout="prev, pager, next" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
       </el-pagination>
     </template>
 

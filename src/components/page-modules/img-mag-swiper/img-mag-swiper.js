@@ -52,6 +52,77 @@ export default {
             this.$axios({
                 url: '/backstage/api/rotation/addRotation',
                 method: 'post',
+                data: [params]
+            }).then(response => {
+                console.log(response);
+                this.getImgLists();
+            },(error) => {
+                console.log(error);
+            });
+        },
+        clearAll() {
+            if (!this.imgList.length) {
+                return
+            }
+            const params = {
+                ids: [],
+                fileUrls: [],
+                detailUrls: []
+            };
+            this.imgList.forEach(item => {
+                params.ids.push(item.id);
+                params.fileUrls.push(item.url);
+                if (item.detailUrl) {
+                    params.detailUrls.push(item.detailUrl);
+                }
+            });
+
+            this.$axios({
+                url: '/backstage/api/rotation/deleteRotation',
+                method: 'post',
+                data: params
+            }).then(response => {
+                console.log(response);
+                this.getImgLists();
+            },(error) => {
+                console.log(error);
+            });
+        },
+        clearOne(data) {
+            const params = {
+                ids: [data.id],
+                fileUrls: [data.url]
+            };
+            this.$axios({
+                url: '/backstage/api/rotation/deleteRotation',
+                method: 'post',
+                data: params
+            }).then(response => {
+                console.log(response);
+                this.getImgLists();
+            },(error) => {
+                console.log(error);
+            });
+        },
+        addDetailUrl(data) {
+            data.inputState = true
+        },
+        complateUrl(data) {
+            data.inputState = false;
+            if (!data.detailUrl) {
+                return;
+            }
+            const params = {
+                id: data.id,
+                name: data.name,
+                url: data.url,
+                sort: data.sort,
+                detailUrl: data.detailUrl,
+                status: data.status
+            };
+            this.$axios({
+                url: '/backstage/api/rotation/updateRotation',
+                method: 'post',
                 data: params
             }).then(response => {
                 console.log(response);

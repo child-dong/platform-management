@@ -155,3 +155,33 @@ html, body{
 .el-button--primary{
   background: #4B8EEA;
 }
+.el-button--text{
+  font-size: 24px;
+  color: #4B8EEA;
+  line-height: 33px;
+  &:active{
+    color: #4B8EEA;
+  }
+}
+.el-pagination{
+  margin: 20px;
+  text-align: right;
+}
+.el-pagination.is-background .btn-prev, .el-pagination.is-background .btn-next, .el-pagination.is-background .el-pager li{
+  margin: 0 7px;
+  min-width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 24px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled):hover{
+  color: inherit;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background: #4B8EEA;
+  color: #FFFFFF;
+}
+.el-pagination .btn-prev .el-icon, .el-pagination .btn-next .el-icon{
+  margin: 0 auto;
+  font-size: 24px;
+}

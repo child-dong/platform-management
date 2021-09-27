@@ -27,6 +27,10 @@
             </template>
           </el-table-column>
         </el-table>
+        <template v-if="total !== 0">
+          <el-pagination background layout="prev, pager, next" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
+          </el-pagination>
+        </template>
       </div>
     </div>
   </div>

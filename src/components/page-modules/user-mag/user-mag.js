@@ -8,7 +8,7 @@ export default {
             content: '',
             pageNum: 1,
             pageSize: 10,
-            total: 100,
+            total: 0,
             tableData: [
             ]
         }
@@ -25,12 +25,14 @@ export default {
             }).then(response => {
                 console.log(response);
                 this.tableData = response.data.records;
+                this.total = response.data.total
             },(error) => {
                 console.log(error);
             });
         },
         onUpdate(e) {
-            console.log(e)
+            this.pageNum = e;
+            this.getTableData();
         }
     },
 
