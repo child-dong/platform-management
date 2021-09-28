@@ -43,7 +43,7 @@ export default {
                     }
                 }
                 for (let item of this.postData) {
-                    item.percent = (item.value / this.postAllData).toFixed(2) * 100 + "%"
+                    item.percent = Math.round((item.value / this.postAllData) * 100) + "%"
                 }
                 this.makeChart1(this.postData);
             });
@@ -59,8 +59,9 @@ export default {
                 let data = [];
                 let name = [];
                 for (let item of response.data) {
-                    data.push({value: item.onlineNum, name: item.time});
-                    name.push(item.time)
+                    const time = item.time.substr(item.time.length - 5, 2);
+                    data.push({value: item.onlineNum, name: time});
+                    name.push(time)
                 }
                 this.makeChart2(data, name);
             });
@@ -75,7 +76,7 @@ export default {
                 let data1 = [];
                 let name = [];
                 for (let item of response.data) {
-                    const time = item.time.substr(item.time.length - 2, 2).replace(0, '');
+                    const time = item.time.substr(item.time.length - 2, 2);
                     data.push({value: item.userTotal, name: time});
                     item.total = item.careerPostTotal + item.talenRecruitmentTotal + item.waresRepairTotal + item.waresSellTotal + item.waresWanyBuyTotal;
                     data1.push({value: item.total, name: time});

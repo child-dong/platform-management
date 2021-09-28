@@ -2,7 +2,7 @@
   .line-common{
     margin: 0;
     width: 1620px;
-    height: 1045px;
+    height: 960px;
     border-radius: 8px;
     background: #FFFFFF;
     position: relative;
@@ -32,9 +32,35 @@
         background: #F5F5F6;
         .el-aside{
           width: 188px;
-          height: 876px;
+          height: 800px;
           background: #255977;
           border-radius: 6px 0 0 6px;
+          .list-item{
+            margin-top: 28px;
+            font-size: 28px;
+            color: #7CB6C9;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            &:hover{
+              color: #FFFFFF;
+            }
+            &.active{
+              color: #FFFFFF;
+            }
+          }
+          .add-item{
+            margin: 28px auto 0;
+            width: 148px;
+            height: 41px;
+            border-radius: 4px;
+            border: 1px solid #7CB6C9;
+            text-align: center;
+            line-height: 41px;
+            font-size: 18px;
+            color: #7CB6C9;
+            cursor: pointer;
+          }
         }
         .el-header{
           padding: 14px 0 0 27px;
@@ -52,6 +78,31 @@
           width: 1376px;
           .library-box{
             display: flex;
+            .library-add{
+              margin-right: 15px;
+              width: 153px;
+              height: 217px;
+              background: #fff;
+              cursor: pointer;
+              .dv1{
+                margin: 65px auto 0;
+                width: 54px;
+                height: 45px;
+                img{
+                  width: 100%;
+                  height: 100%
+                }
+              }
+              .dv2{
+                margin-top: 17px;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 400;
+                color: #969696;
+                line-height: 25px;
+              }
+
+            }
             .library-item{
               margin-right: 15px;
               width: 153px;

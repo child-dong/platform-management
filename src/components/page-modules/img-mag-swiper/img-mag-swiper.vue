@@ -8,7 +8,7 @@
             :speed="swiper_options.speed"
             navigation
     >
-      <swiper-slide v-for="item in imgList" :key="item.id"><img style="width: 506px;height: 220px" v-bind:src="item.url" alt=""></swiper-slide>
+      <swiper-slide style="width: 506px !important;" v-for="item in imgList" :key="item.id"><img style="width: 506px;height: 220px" v-bind:src="item.url" alt=""></swiper-slide>
     </swiper>
   </div>
 

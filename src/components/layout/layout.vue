@@ -6,8 +6,6 @@
               :uniqueOpened="true"
               default-active="1"
               class="el-menu-vertical-demo"
-              @open="handleOpen"
-              @close="handleClose"
       >
         <el-menu-item index="1" @click="go({url: '/layout/homepage', title: '数据分析'})">
           <i class="icon-menu icon-home"></i>
@@ -39,8 +37,11 @@
           <el-col :span="20">
             <div class="module-title">{{title}}</div>
           </el-col>
-          <el-col :span="4">
+          <el-col :span="2">
             <div class="userInfos">主账户</div>
+          </el-col>
+          <el-col :span="2">
+            <div style="cursor: pointer"  @click="logout()">退出登录</div>
           </el-col>
         </el-row>
       </el-header>

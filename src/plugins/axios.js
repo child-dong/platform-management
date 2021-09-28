@@ -6,7 +6,8 @@ axios.defaults.withCredentials = true;
 // 使用自定义配置新建一个 axios 实例
 const service= axios.create({
     // 基础的请求地址
-    baseURL: '/api',
+    // baseURL: '',   // 开发
+    baseURL: 'https://www.fansyun.cn/gateway',   // 现场
     // 设置超时时间 5s
     timeout: 5000
 });
@@ -64,7 +65,7 @@ service.interceptors.response.use(
             // localStorage.removeItem("token");
             // 跳转登录
             setTimeout(() => {
-                //   window.location.href = "/login";
+                  window.location.href = "";
             }, 1000);
         } else {
             if (error.response.status >= 500) {

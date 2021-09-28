@@ -7,11 +7,20 @@
       </div>
       <div class="line-content">
         <el-container>
-          <el-aside width="188px">Aside</el-aside>
+          <el-aside width="188px">
+            <div class="list-item" v-for="item in menus" :key="item.id" :class="{'active': activeMenu === item.id}">{{item.name}}</div>
+            <div class="add-item">添加名称</div>
+          </el-aside>
           <el-container>
             <el-header>模具图片</el-header>
             <el-main>
               <div class="library-box">
+                <div class="library-add">
+                  <div class="dv1">
+                    <img src="" alt="">
+                  </div>
+                  <div class="dv2">添加图片</div>
+                </div>
                 <div class="library-item">
                   <div class="dv1">
                     <img src="" alt="">

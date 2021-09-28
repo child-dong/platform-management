@@ -1,10 +1,12 @@
 <template>
   <el-card class="box-search-card">
     <span class="search-label">帖子类型：</span>
-    <el-select v-model="type">
-      <el-option label="全部" value=""></el-option>
-      <el-option label="区域一" value="shanghai"></el-option>
-      <el-option label="区域二" value="beijing"></el-option>
+    <el-select v-model="type" @change="search()">
+      <el-option label="生活" value="tb_career_post"></el-option>
+      <el-option label="出售" value="tb_wares_sell"></el-option>
+      <el-option label="求购" value="tb_wares_wany_buy"></el-option>
+      <el-option label="维修" value="tb_wares_repair"></el-option>
+      <el-option label="人才招聘" value="tb_talent_recruitment"></el-option>
     </el-select>
     <div class="margin"></div>
     <span class="search-label">发帖时间：</span>
@@ -14,36 +16,151 @@
       range-separator="-"
       start-placeholder="开始日期"
       end-placeholder="结束日期"
+      @change="search()"
     >
     </el-date-picker>
   </el-card>
   <div class="btn-box">
     <el-input placeholder="输入要搜索内容" v-model="content"></el-input>
-    <span class="inp-search">搜索</span>
-    <el-button type="primary">删贴</el-button>
+    <span class="inp-search" @click="search()">搜索</span>
+    <el-popconfirm
+            title="是否删除?"
+            confirm-button-text="确认"
+            cancel-button-text="取消"
+            confirmButtonType="text"
+            @confirm="delMulti()"
+            @cancel="showSelect(false)">
+      <template #reference>
+        <el-button type="primary" @click="showSelect(true)">删贴</el-button>
+      </template>
+    </el-popconfirm>
   </div>
   <div class="table-box">
-    <el-table :data="tableData" style="width: 100%" max-height="680">
-      <el-table-column align="center" prop="date" label="日期">
+    <el-table :data="tableData" style="width: 100%" max-height="680" @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55" />
+      <el-table-column align="center" prop="photo" label="用户">
+        <template #default="scope">
+          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
+        </template>
       </el-table-column>
-      <el-table-column align="center" prop="name" label="姓名"> </el-table-column>
-      <el-table-column align="center" prop="province" label="省份">
+      <el-table-column align="center" prop="name" label=""> </el-table-column>
+      <el-table-column align="center" prop="phone" label="手机">
       </el-table-column>
-      <el-table-column align="center" prop="city" label="市区"> </el-table-column>
-      <el-table-column align="center" prop="address" label="地址"> </el-table-column>
-      <el-table-column align="center" prop="zip" label="邮编"> </el-table-column>
+      <el-table-column align="center" prop="homeImage" label="帖子照片">
+        <template #default="scope">
+          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].homeImage" alt="">
+        </template>
+      </el-table-column>
+      <el-table-column align="center" prop="content" label="帖子内容"> </el-table-column>
+      <el-table-column align="center" prop="createTime" label="发帖时间"> </el-table-column>
+      <el-table-column align="center" prop="type" label="帖子类型"> </el-table-column>
+      <el-table-column align="center" prop="status" label="状态">
+        <template #default="scope">
+          <el-popconfirm
+                  title="审核是否通过?"
+                  confirm-button-text="通过"
+                  cancel-button-text="不通过"
+                  confirmButtonType="text"
+                  @confirm="confirmEvent(tableData[scope.$index], 1)"
+                  @cancel="confirmEvent(tableData[scope.$index], -1)"
+                  v-if="tableData[scope.$index].status === 0">
+            <template #reference>
+              <el-button v-if="tableData[scope.$index].status === 0"
+                         type="text"
+                         size="small"
+              >
+                审核
+              </el-button>
+            </template>
+          </el-popconfirm>
+          <span v-if="tableData[scope.$index].status === 1">通过</span>
+          <span v-if="tableData[scope.$index].status === -1">未通过</span>
+          <span v-if="tableData[scope.$index].status === -2">下帖</span>
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="操作">
         <template #default="scope">
           <el-button
-                  @click.prevent="deleteRow(scope.$index, tableData)"
-                  type="text"
-                  size="small"
+            @click.prevent="dialogShow(scope.$index, tableData)"
+            type="text"
+            size="small"
           >
-            移除
+            详情
           </el-button>
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog
+      v-model="dialogVisible"
+      title="出售帖子"
+      width="1095px">
+      <div class="info-common info-1">
+        <img :src="datailData.photo" alt="">
+        <span class="sp1">{{datailData.name}}</span>
+        <span class="sp2">{{datailData.createTime}}发布</span>
+      </div>
+      <div class="marginH13"></div>
+      <div class="info-common info-2">
+        <span class="sp1">手机&nbsp;&nbsp;{{datailData.phone}}</span>
+      </div>
+      <div class="marginH13"></div>
+      <div class="info-title">内容</div>
+      <div class="marginH6"></div>
+      <div class="info-common info-3">
+        <span class="sp1">{{datailData.content}}</span>
+      </div>
+      <div class="marginH13"></div>
+      <div class="info-title">照片</div>
+      <div class="marginH18"></div>
+      <div class="swiper-box">
+        <swiper
+                :slides-per-view="5"
+                :space-between="14"
+                navigation
+        >
+          <swiper-slide style="width: 180px !important;margin-right: 14px;" v-for="item in datailData.waresSellFileList" :key="item"><img style="width: 180px;height: 230px" v-bind:src="item.url" alt=""></swiper-slide>
+        </swiper>
+      </div>
+      <div class="marginH13"></div>
+      <div class="info-title">产品详情</div>
+      <div class="marginH18"></div>
+      <div class="swiper-box">
+        <swiper
+                :slides-per-view="5"
+                :space-between="14"
+        >
+          <swiper-slide style="width: 180px !important;margin-right: 14px" v-for="item in datailData.waresSellFileListDetails" :key="item"><img style="width: 180px;height: 230px" v-bind:src="item.url" alt=""></swiper-slide>
+        </swiper>
+      </div>
+      <el-popconfirm
+              title="是否删除?"
+              confirm-button-text="确认"
+              cancel-button-text="取消"
+              confirmButtonType="text"
+              @confirm="delSingle(datailData)"
+             >
+        <template #reference>
+          <el-button type="primary" style="margin-top: 67px;width: 255px;height: 80px;font-size: 30px">删除</el-button>
+        </template>
+      </el-popconfirm>
+      <el-popconfirm
+              title="审核是否通过?"
+              confirm-button-text="通过"
+              cancel-button-text="不通过"
+              confirmButtonType="text"
+              @confirm="confirmEvent(datailData, 1)"
+              @cancel="confirmEvent(datailData, -1)"
+              v-if="datailData.status === 0">
+        <template #reference>
+          <el-button type="primary" style="margin: 67px 0 0 28px;width: 255px;height: 80px;background: #4BC9EA;border: none;font-size: 30px">审核</el-button>
+        </template>
+      </el-popconfirm>
+
+    </el-dialog>
+    <template v-if="total !== 0">
+      <el-pagination background layout="prev, pager, next" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
+      </el-pagination>
+    </template>
   </div>
 </template>
 <script src="./post-mag.js"></script>

@@ -5,7 +5,11 @@
           <div class="line-one-1-item">
             <p class="p1">注册总人数</p>
             <p class="p2">{{allPeople.total}}</p>
-            <p class="p3"><span class="sp1">{{(Math.abs(allPeople.total - allPeople.lastMonthTotal) * 100 / allPeople.lastMonthTotal).toFixed(2)}}%</span>同上月对比</p>
+            <p class="p3">
+              <span class="sp1" v-if="allPeople.lastMonthTotal !== 0">{{(Math.abs(allPeople.total - allPeople.lastMonthTotal) * 100 / allPeople.lastMonthTotal).toFixed(2)}}%</span>
+              <span class="sp1" v-else>0%</span>
+              同上月对比
+            </p>
           </div>
 
           <div class="line-one-1-item line-one-1-item2">

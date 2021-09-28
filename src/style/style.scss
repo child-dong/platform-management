@@ -163,6 +163,11 @@ html, body{
     color: #4B8EEA;
   }
 }
+.el-popconfirm{
+  .el-button--text{
+    font-size: 12px;
+  }
+}
 .el-pagination{
   margin: 20px;
   text-align: right;
@@ -184,4 +189,57 @@ html, body{
 .el-pagination .btn-prev .el-icon, .el-pagination .btn-next .el-icon{
   margin: 0 auto;
   font-size: 24px;
+}
+.el-dialog{
+  border-radius: 8px;
+}
+.el-dialog__body{
+  padding: 28px;
+}
+.el-dialog__header{
+  padding: 20px 28px 0;
+  height: 42px;
+  .el-dialog__title{
+    font-size: 30px;
+    color: #363636;
+    line-height: 42px;
+  }
+}
+.el-checkbox__inner{
+  background: #B0B4BE;
+  border: none;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  &:before{
+    display: none;
+  }
+  &:after{
+    top: 3px;
+    left: 9px;
+    width: 10px;
+    height: 17px;
+    border-width: 2px;
+  }
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+  background: rgba(75, 142, 234, 1);
+}
+.el-checkbox__input.is-indeterminate .el-checkbox__inner::before{
+  display: none;
+}
+.el-table-column--selection .cell{
+  padding-right: 0;
+}
+.marginH13{
+  margin: 0;
+  height: 13px;
+}
+.marginH6{
+  margin: 0;
+  height: 6px;
+}
+.marginH18{
+  margin: 0;
+  height: 18px;
 }

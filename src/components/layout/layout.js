@@ -5,17 +5,13 @@ export default {
         }
     },
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath)
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath)
-        },
         go(data) {
             this.title = data.title;
-            this.$router.push(data.url, {
-                data: 1
-            })
+            this.$router.push(data.url)
+        },
+        logout() {
+            window.localStorage.setItem('token', '');
+            this.$router.push('/');
         }
     }
 }

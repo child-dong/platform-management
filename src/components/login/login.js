@@ -17,8 +17,10 @@ export default {
                 return
             }
             const params = {
-                client_id: 'client_3',
-                client_secret: '123456',
+                // client_id: 'client_3',
+                // client_secret: '123456',
+                client_id: 'backstage',
+                client_secret: 'fansYun@.cn',
                 grant_type: 'password',
                 username: this.username,
                 password: this.password
@@ -34,9 +36,7 @@ export default {
                     return
                 }
                 window.localStorage.setItem('token', response.access_token);
-                this.$router.push('/layout/homepage', {
-                    data: 1
-                })
+                this.$router.push('/layout/homepage')
             },(error) => {
                 console.log(error);
                 ElMessage.error('请输入正确的账号密码');

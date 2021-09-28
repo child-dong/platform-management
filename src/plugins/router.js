@@ -11,17 +11,25 @@ import CncSystem from '../components/page-modules/cnc-system/cnc-system.vue'
 const routes = [
     {
         path: '/',
-        component: Login
+        component: Login,
+        meta:{
+            // 页面标题title
+            title: '钣金联盟'
+        }
     },
     {
         path: '/Layout',
         component: Layout,
+        meta:{
+            // 页面标题title
+            title: '钣金联盟'
+        },
         children: [
             {
                 // 当 /user/:id/profile 匹配成功，
                 // UserProfile 会被渲染在 User 的 <router-view> 中
                 path: 'homepage',
-                component: Homepage
+                component: Homepage,
             },
             {
                 // 当 /user/:id/profile 匹配成功，
@@ -33,7 +41,11 @@ const routes = [
                 // 当 /user/:id/profile 匹配成功，
                 // UserProfile 会被渲染在 User 的 <router-view> 中
                 path: 'img-mag-library',
-                component: ImgMagLibrary
+                component: ImgMagLibrary,
+                meta:{
+                    // 页面标题title
+                    title: '钣金联盟'
+                }
             },
             {
                 // 当 /user/:id/profile 匹配成功，
