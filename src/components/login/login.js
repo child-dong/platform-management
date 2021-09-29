@@ -17,10 +17,10 @@ export default {
                 return
             }
             const params = {
-                // client_id: 'client_3',
-                // client_secret: '123456',
-                client_id: 'backstage',
-                client_secret: 'fansYun@.cn',
+                client_id: 'client_3',
+                client_secret: '123456',
+                // client_id: 'backstage',
+                // client_secret: 'fansYun@.cn',
                 grant_type: 'password',
                 username: this.username,
                 password: this.password

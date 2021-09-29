@@ -6,8 +6,8 @@ axios.defaults.withCredentials = true;
 // 使用自定义配置新建一个 axios 实例
 const service= axios.create({
     // 基础的请求地址
-    // baseURL: '',   // 开发
-    baseURL: 'https://www.fansyun.cn/gateway',   // 现场
+    baseURL: '',   // 开发
+    // baseURL: 'https://www.fansyun.cn/gateway',   // 现场
     // 设置超时时间 5s
     timeout: 5000
 });
@@ -67,6 +67,7 @@ service.interceptors.response.use(
             setTimeout(() => {
                   window.location.href = "";
             }, 1000);
+            return Promise.reject(error)
         } else {
             if (error.response.status >= 500) {
                 console.log("服务器开小差了，请稍后再试！");

@@ -3,6 +3,8 @@ import App from './App.vue'
 import installElementPlus from './plugins/element'
 import './style/element-variables.scss'
 import 'swiper/swiper.min.css';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
 import './style/style.scss'
 import Router from './plugins/router'
 import * as echarts from 'echarts'

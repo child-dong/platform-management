@@ -29,15 +29,17 @@
             cancel-button-text="取消"
             confirmButtonType="text"
             @confirm="delMulti()"
-            @cancel="showSelect(false)">
+            v-if="multipleSelection.length"
+    >
       <template #reference>
-        <el-button type="primary" @click="showSelect(true)">删贴</el-button>
+        <el-button type="primary">删贴</el-button>
       </template>
     </el-popconfirm>
+    <el-button type="primary" @click="showSelect()" v-if="!multipleSelection.length">删贴</el-button>
   </div>
   <div class="table-box">
     <el-table :data="tableData" style="width: 100%" max-height="680" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" />
+      <el-table-column type="selection" width="55" v-if="select" />
       <el-table-column align="center" prop="photo" label="用户">
         <template #default="scope">
           <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">

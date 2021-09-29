@@ -8,8 +8,9 @@
       <div class="line-content">
         <el-container>
           <el-aside width="188px">
-            <div class="list-item" v-for="item in menus" :key="item.id" :class="{'active': activeMenu === item.id}">{{item.name}}</div>
-            <div class="add-item">添加名称</div>
+            <div class="list-item" v-for="item in menus" @click="changeMenu(item.name)" :key="item.id" :class="{'active': activeMenu === item.name}">{{item.name}}</div>
+            <div class="add-item" @click="addMenu()" v-if="!inputState">添加名称</div>
+            <el-input class="add-item" placeholder="" v-model="menuName" @blur="complateName()" v-else></el-input>
           </el-aside>
           <el-container>
             <el-header>模具图片</el-header>
@@ -20,35 +21,30 @@
                     <img src="" alt="">
                   </div>
                   <div class="dv2">添加图片</div>
+                  <Ossupload v-on:childByValue="childByValue" v-bind:showList="false" v-bind:limit="99"></Ossupload>
                 </div>
-                <div class="library-item">
+                <div class="library-item" v-for="item in tableData" :key="item.id">
                   <div class="dv1">
-                    <img src="" alt="">
+                    <img :src="item.url" alt="">
                   </div>
-                  <div class="dv2">V4-V7</div>
+                  <div class="dv2" v-if="!item.fileInputState">{{item.name}}</div>
+                  <el-input class="dv2" placeholder="" v-model="item.editName" v-else></el-input>
                   <div class="dv3">
-                    <span class="sp1">编辑</span>
-                    <span class="sp2">删除</span>
-                  </div>
-                </div>
-                <div class="library-item">
-                  <div class="dv1">
-                    <img src="" alt="">
-                  </div>
-                  <div class="dv2">V4-V7</div>
-                  <div class="dv3">
-                    <span class="sp1">编辑</span>
-                    <span class="sp2">删除</span>
-                  </div>
-                </div>
-                <div class="library-item">
-                  <div class="dv1">
-                    <img src="" alt="">
-                  </div>
-                  <div class="dv2">V4-V7</div>
-                  <div class="dv3">
-                    <span class="sp1">编辑</span>
-                    <span class="sp2">删除</span>
+                    <span class="sp1" @click="editFile(item)" v-if="!item.fileInputState">编辑</span>
+                    <span class="sp1 active" @click="complateFile(item, 1)" v-else>确认</span>
+                    <el-popconfirm
+                            title="是否删除?"
+                            confirm-button-text="确认"
+                            cancel-button-text="取消"
+                            confirmButtonType="text"
+                            @confirm="delSingle(item.id)"
+                            v-if="!item.fileInputState"
+                    >
+                      <template #reference>
+                        <span class="sp2">删除</span>
+                      </template>
+                    </el-popconfirm>
+                    <span class="sp2" @click="complateFile(item, 0)" v-else>取消</span>
                   </div>
                 </div>
               </div>
@@ -56,6 +52,10 @@
           </el-container>
         </el-container>
       </div>
+      <template v-if="total !== 0">
+        <el-pagination background layout="prev, pager, next" :page-size="pageSize" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
+        </el-pagination>
+      </template>
     </div>
   </div>
 </template>

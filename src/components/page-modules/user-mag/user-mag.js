@@ -69,8 +69,10 @@ export default {
             });
         },
         // 筛选框显隐藏
-        showSelect(type) {
-            this.select = type;
+        showSelect() {
+            if (!this.multipleSelection.length) {
+                this.select = !this.select;
+            }
         },
         // 选中
         handleSelectionChange(val) {
@@ -89,7 +91,6 @@ export default {
             //     method: 'get'
             // }).then(response => {
             //     console.log(response);
-            //     this.select = false;
             // ElMessage.success('删除成功');
             //     this.getTableData();
             // },(error) => {

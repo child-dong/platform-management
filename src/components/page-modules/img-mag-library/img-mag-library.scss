@@ -24,8 +24,7 @@
       }
     }
     .line-content{
-      margin: 15px 0 0 28px;
-      width: 100%;
+      margin: 15px 28px;
       overflow: hidden;
       position: relative;
       .el-container{
@@ -50,6 +49,7 @@
             }
           }
           .add-item{
+            display: block;
             margin: 28px auto 0;
             width: 148px;
             height: 41px;
@@ -60,6 +60,11 @@
             font-size: 18px;
             color: #7CB6C9;
             cursor: pointer;
+            :deep .el-input__inner{
+              width: 148px;
+              height: 41px;
+              border: 1px solid #7CB6C9;
+            }
           }
         }
         .el-header{
@@ -78,12 +83,13 @@
           width: 1376px;
           .library-box{
             display: flex;
+            flex-wrap: wrap;
             .library-add{
               margin-right: 15px;
               width: 153px;
               height: 217px;
               background: #fff;
-              cursor: pointer;
+              position: relative;
               .dv1{
                 margin: 65px auto 0;
                 width: 54px;
@@ -101,10 +107,18 @@
                 color: #969696;
                 line-height: 25px;
               }
-
+              .avatar-uploader{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                opacity: 0;
+              }
             }
             .library-item{
-              margin-right: 15px;
+              margin: 0 15px 28px 0;
               width: 153px;
               height: 217px;
               background: #fff;
@@ -118,11 +132,18 @@
                 }
               }
               .dv2{
-                margin-top: 2px;
+                display: block;
+                margin: 2px auto 0;
+                width: 126px;
+                height: 35px;
                 text-align: center;
                 font-size: 24px;
                 color: #363636;
                 line-height: 33px;
+                :deep .el-input__inner{
+                  width: 126px;
+                  height: 35px;
+                }
               }
               .dv3{
                 margin-top: 7px;
@@ -136,8 +157,12 @@
                   font-weight: 400;
                   color: #969696;
                   text-align: center;
+                  cursor: pointer;
                   &.sp1{
                     border-right: 1px solid #EBEBEB;
+                    &.active{
+                      color: #4B8EEA;
+                    }
                   }
                 }
               }

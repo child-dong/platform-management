@@ -1,8 +1,6 @@
 import {reactive} from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import SwiperCore, { Navigation, Autoplay } from 'swiper'
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
 import Ossupload from '../../shared/oss-upload/oss-upload.vue'
 SwiperCore.use([Autoplay, Navigation]);
 export default {
@@ -46,7 +44,7 @@ export default {
                 name: e.name,
                 url: e.url,
                 sort: 1,
-                detail_url: '',
+                detailUrl: '',
                 status: '1'
             };
             this.$axios({
@@ -109,12 +107,9 @@ export default {
         },
         complateUrl(data) {
             data.inputState = false;
-            if (!data.detailUrl) {
-                return;
-            }
             const params = {
                 id: data.id,
-                name: data.name,
+                name: data.name || '',
                 url: data.url,
                 sort: data.sort,
                 detailUrl: data.detailUrl,

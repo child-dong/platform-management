@@ -25,3 +25,37 @@
     }
   }
 }
+.avatar-uploader{
+  :deep .el-upload {
+    border: 2px dashed rgba(247, 247, 247, 1);
+    border-radius: 6px;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    &:hover {
+      border-color: rgba(184, 203, 246, 1);
+    }
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 250px;
+    height: 250px;
+    line-height: 250px;
+    text-align: center;
+  }
+  .avatar {
+    width: 250px;
+    height: 250px;
+    display: block;
+  }
+  :deep .el-upload-list__item{
+    width: 250px;
+    height: 250px;
+  }
+  :deep .el-icon-zoom-in{
+    display: none;
+  }
+}

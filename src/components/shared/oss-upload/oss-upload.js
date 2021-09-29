@@ -1,5 +1,10 @@
 const OSS = require('ali-oss');
 export default {
+    name: 'upload',
+    props: {
+        showList: false,
+        limit: 0
+    },
     data() {
         return {
             client: {},
@@ -45,6 +50,13 @@ export default {
             } catch(e){
                 console.log(e);
             }
+        },
+        remove() {
+            const params = {
+                name: '',
+                url: ''
+            };
+            this.$emit('childByValue', params)
         }
     },
     mounted() {

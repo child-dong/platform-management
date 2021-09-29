@@ -104,7 +104,6 @@ html, body{
       .el-button{
         position: absolute;
         right: 0;
-        padding-top: 6px;
         width: 120px;
         height: 46px;
         font-size: 24px;
@@ -152,8 +151,14 @@ html, body{
   font-size: 24px;
   color: #969696;
 }
+.el-button{
+  padding: 0 18px;
+  font-size: 24px;
+  line-height: 33px;
+}
 .el-button--primary{
   background: #4B8EEA;
+  border: none;
 }
 .el-button--text{
   font-size: 24px;

@@ -2,10 +2,13 @@
   <el-upload
           class="avatar-uploader"
           action=""
-          :show-file-list="false"
+          :show-file-list="showList"
+          list-type="picture-card"
           multiple
           :on-success="handleAvatarSuccess"
+          :on-remove="remove"
           :http-request="uploadOwn"
+          :limit="limit"
   >
     <i class="el-icon-plus avatar-uploader-icon"></i>
   </el-upload>

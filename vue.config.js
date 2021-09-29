@@ -41,25 +41,25 @@ module.exports = {
 
     pwa: {}, // configure webpack-dev-server behavior
 
-    // devServer: {
-    //     disableHostCheck: false,
-    //
-    //     hotOnly: false, // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
-    //
-    //     proxy: {//配置跨域
-    //         '/': {
-    //             target: 'http://1.117.200.111:7000/',//这里后台的地址模拟的;应该填写你们真实的后台接口
-    //             ws: true,
-    //             changOrigin: true,//允许跨域
-    //             pathRewrite: {
-    //                 '^/': ''//请求的时候使用这个api就可以
-    //             }
-    //         }
-    //
-    //     }
-    //
-    //     // before: app => {}
-    // }, // 第三方插件配置
+    devServer: {
+        disableHostCheck: false,
+
+        hotOnly: false, // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
+
+        proxy: {//配置跨域
+            '/': {
+                target: 'http://1.117.200.111:7000/',//这里后台的地址模拟的;应该填写你们真实的后台接口
+                ws: true,
+                changOrigin: true,//允许跨域
+                pathRewrite: {
+                    '^/': ''//请求的时候使用这个api就可以
+                }
+            }
+
+        }
+
+        // before: app => {}
+    }, // 第三方插件配置
     pluginOptions: {
         // ...
     }
