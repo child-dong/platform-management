@@ -45,6 +45,20 @@
     height: 250px;
     line-height: 250px;
     text-align: center;
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      display: inline-block;
+      width: 69px;
+      height: 69px;
+      background: url("../../../assets/icon-upload-img.png") no-repeat;
+      background-size: 69px 69px;
+    }
   }
   .avatar {
     width: 250px;

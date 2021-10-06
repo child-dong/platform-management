@@ -4,28 +4,28 @@
       <img src="../../assets/logo.png" alt="" class="logo">
       <el-menu
               :uniqueOpened="true"
-              default-active="1"
+              :default-active="activeIndex"
               class="el-menu-vertical-demo"
       >
         <el-menu-item index="1" @click="go({url: '/layout/homepage', title: '数据分析'})">
           <i class="icon-menu icon-home"></i>
           <template #title>数据分析</template>
         </el-menu-item>
-        <el-submenu index="2">
+        <el-submenu index="2-1">
           <template #title>
-            <i class="icon-menu icon-home"></i>
+            <i class="icon-menu icon-img"></i>
             <span>图片管理</span>
           </template>
-          <el-menu-item index="1-1" @click="go({url: '/layout/img-mag-swiper', title: '轮播图'})">轮播图</el-menu-item>
-          <el-menu-item index="1-2" @click="go({url: '/layout/cnc-system', title: '数控系统'})">数控系统</el-menu-item>
-          <el-menu-item index="1-3" @click="go({url: '/layout/img-mag-library', title: '模具图库'})">模具图库</el-menu-item>
+          <el-menu-item index="2" @click="go({url: '/layout/img-mag-swiper', title: '轮播图'})">轮播图</el-menu-item>
+          <el-menu-item index="3" @click="go({url: '/layout/cnc-system', title: '数控系统'})">数控系统</el-menu-item>
+          <el-menu-item index="4" @click="go({url: '/layout/img-mag-library', title: '模具图库'})">模具图库</el-menu-item>
         </el-submenu>
-        <el-menu-item index="3" @click="go({url: '/layout/user-mag', title: '用户管理'})">
-          <i class="icon-menu icon-home"></i>
+        <el-menu-item index="5" @click="go({url: '/layout/user-mag', title: '用户管理'})">
+          <i class="icon-menu icon-user"></i>
           <template #title>用户管理</template>
         </el-menu-item>
-        <el-menu-item index="4" @click="go({url: '/layout/post-mag', title: '帖子管理'})">
-          <i class="icon-menu icon-home"></i>
+        <el-menu-item index="6" @click="go({url: '/layout/post-mag', title: '帖子管理'})">
+          <i class="icon-menu icon-post"></i>
           <template #title>帖子管理</template>
         </el-menu-item>
       </el-menu>

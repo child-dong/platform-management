@@ -21,23 +21,23 @@
   <div class="btn-box">
     <el-input placeholder="输入要搜索内容" v-model="content"></el-input>
     <span class="inp-search" @click="search()">搜索</span>
-    <el-popconfirm
-            title="确认删除?"
-            confirm-button-text="删除"
-            cancel-button-text="取消"
-            confirmButtonType="text"
-            @confirm="delMulti()"
-            v-if="multipleSelection.length"
-    >
-      <template #reference>
-        <el-button type="primary">删除</el-button>
-      </template>
-    </el-popconfirm>
-    <el-button type="primary" @click="showSelect()" v-if="!multipleSelection.length">删除</el-button>
+<!--    <el-popconfirm-->
+<!--            title="确认删除?"-->
+<!--            confirm-button-text="删除"-->
+<!--            cancel-button-text="取消"-->
+<!--            confirmButtonType="text"-->
+<!--            @confirm="delMulti()"-->
+<!--            v-if="multipleSelection.length"-->
+<!--    >-->
+<!--      <template #reference>-->
+<!--        <el-button type="primary">删除</el-button>-->
+<!--      </template>-->
+<!--    </el-popconfirm>-->
+<!--    <el-button type="primary" @click="showSelect()" v-if="!multipleSelection.length">删除</el-button>-->
   </div>
   <div class="table-box">
     <el-table :data="tableData" style="width: 100%" max-height="680" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" v-if="select" />
+<!--      <el-table-column type="selection" width="55" v-if="select" />-->
       <el-table-column align="center" prop="photo" label="用户">
         <template #default="scope">
           <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
@@ -81,6 +81,20 @@
               >
                 锁定
               </el-button>
+            </template>
+          </el-popconfirm>
+
+          <el-popconfirm
+              title="是否删除?"
+              confirm-button-text="确认"
+              cancel-button-text="取消"
+              confirmButtonType="text"
+              @confirm="delSingle(scope.$index, tableData)"
+          >
+            <template #reference>
+              <el-button type="text"
+                         size="small"
+                         style="margin-left: 0">删除</el-button>
             </template>
           </el-popconfirm>
         </template>

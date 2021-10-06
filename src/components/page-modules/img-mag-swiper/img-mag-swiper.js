@@ -89,7 +89,8 @@ export default {
         clearOne(data) {
             const params = {
                 ids: [data.id],
-                fileUrls: [data.url]
+                fileUrls: [data.url],
+                detailUrls: [data.detailUrl || '']
             };
             this.$axios({
                 url: '/backstage/api/rotation/deleteRotation',

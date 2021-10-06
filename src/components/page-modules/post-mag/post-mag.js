@@ -40,9 +40,6 @@ export default {
         return {swiper_options};
     },
     methods: {
-        deleteRow(index, rows) {
-            rows.splice(index, 1)
-        },
         // 获取列表数据
         getTableData() {
             const params = {

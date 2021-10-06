@@ -9,6 +9,7 @@
           :on-remove="remove"
           :http-request="uploadOwn"
           :limit="limit"
+          :file-list="fileList"
   >
     <i class="el-icon-plus avatar-uploader-icon"></i>
   </el-upload>

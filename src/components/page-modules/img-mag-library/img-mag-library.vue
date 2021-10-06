@@ -18,10 +18,10 @@
               <div class="library-box">
                 <div class="library-add">
                   <div class="dv1">
-                    <img src="" alt="">
+                    <img src="../../../assets/icon-upload-img.png" alt="">
                   </div>
                   <div class="dv2">添加图片</div>
-                  <Ossupload v-on:childByValue="childByValue" v-bind:showList="false" v-bind:limit="99"></Ossupload>
+                  <Ossupload v-on:childByValue="childByValue" v-bind:showList="false" v-bind:limit="99" v-bind:fileList="[]"></Ossupload>
                 </div>
                 <div class="library-item" v-for="item in tableData" :key="item.id">
                   <div class="dv1">
@@ -37,7 +37,7 @@
                             confirm-button-text="确认"
                             cancel-button-text="取消"
                             confirmButtonType="text"
-                            @confirm="delSingle(item.id)"
+                            @confirm="delSingle(item)"
                             v-if="!item.fileInputState"
                     >
                       <template #reference>

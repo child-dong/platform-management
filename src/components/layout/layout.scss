@@ -89,14 +89,34 @@
       display: inline-block;
       width: 30px;
       height: 30px;
-      opacity: 0.6;
+      position: relative;
       &::before{
         content: '';
       }
     }
     .icon-home{
+      top: -2px;
       background: url("../../assets/icon-home.png") no-repeat;
-      background-size: cover;
+      background-size: 100% 100%;
+    }
+    .icon-img{
+      top: -1px;
+      background: url("../../assets/icon-img.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .icon-post{
+      top: -3px;
+      width: 23px;
+      height: 29px;
+      background: url("../../assets/icon-post.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .icon-user{
+      top: -3px;
+      width: 29px;
+      height: 20px;
+      background: url("../../assets/icon-user.png") no-repeat;
+      background-size: 100% 100%;
     }
   }
 }

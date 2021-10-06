@@ -79,23 +79,22 @@ export default {
             this.multipleSelection = val;
             console.log(val);
         },
-        // 删帖多选
-        delMulti() {
-            // if (!this.multipleSelection.length) return;
-            // let id = '';
-            // this.multipleSelection.forEach(item => {
-            //     id += '&id=' + item.id;
-            // });
-            // this.$axios({
-            //     url: `/backstage/api/posts/delete?tableName=${this.type}${id}`,
-            //     method: 'get'
-            // }).then(response => {
-            //     console.log(response);
-            // ElMessage.success('删除成功');
-            //     this.getTableData();
-            // },(error) => {
-            //     console.log(error);
-            // });
+        // 删帖
+        delSingle(index, datas) {
+            const params = {
+                uid: datas[index].uid
+            };
+            this.$axios({
+                url: `/backstage/api/user/delete`,
+                method: 'get',
+                params
+            }).then(response => {
+                console.log(response);
+                ElMessage.success('删除成功');
+                this.getTableData();
+            },(error) => {
+                console.log(error);
+            });
         },
     },
 

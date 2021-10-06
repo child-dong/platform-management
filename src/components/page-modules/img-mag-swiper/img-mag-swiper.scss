@@ -7,25 +7,30 @@
   :deep .swiper-button-prev{
     width: 58px;
     height: 58px;
+    background: rgba(52, 49, 49, 0.5);
+    border-radius: 50%;
     &:after{
       display: block;
       content: '';
       width: 58px;
       height: 58px;
-      background: rgba(52, 49, 49, 0.5);
-      border-radius: 50%;
+      background: url("../../../assets/icon-return.png") center  no-repeat;
+      background-size: 13px 22px;
+      transform: rotateY(180deg);
     }
   }
   :deep .swiper-button-next{
     width: 58px;
     height: 58px;
+    background: rgba(52, 49, 49, 0.5);
+    border-radius: 50%;
     &:after{
       display: block;
       content: '';
       width: 58px;
       height: 58px;
-      background: rgba(52, 49, 49, 0.5);
-      border-radius: 50%;
+      background: url("../../../assets/icon-return.png") center  no-repeat;
+      background-size: 13px 22px;
     }
   }
 }

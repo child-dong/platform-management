@@ -3,7 +3,8 @@ export default {
     name: 'upload',
     props: {
         showList: false,
-        limit: 0
+        limit: 0,
+        fileList: []
     },
     data() {
         return {

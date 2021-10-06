@@ -18,7 +18,7 @@
     </div>
     <div class="line-content">
       <div class="upload-title"><span class="sp1">上传图片（ 尺寸 1035*450 ）</span></div>
-      <Ossupload v-on:childByValue="childByValue" v-bind:showList="false" v-bind:limit="99"></Ossupload>
+      <Ossupload v-on:childByValue="childByValue" v-bind:showList="false" v-bind:limit="99" v-bind:fileList="[]"></Ossupload>
       <div class="upload-title">
         <span class="sp1">修改图片</span>
         <span class="sp2" @click="clearAll()">清空</span>

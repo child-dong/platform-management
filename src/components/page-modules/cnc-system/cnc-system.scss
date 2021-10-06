@@ -2,7 +2,7 @@
   .line-common{
     margin: 0;
     width: 1620px;
-    height: 1045px;
+    height: 960px;
     border-radius: 8px;
     background: #FFFFFF;
     position: relative;
@@ -25,7 +25,9 @@
       }
     }
     .table-box{
-      width: 1600px
+      margin-left: 28px;
+      margin-right: 28px;
+      height: 860px;
     }
   }
 }
@@ -74,4 +76,12 @@
     width: 183px;
     height: 183px;
   }
+}
+.icon-edit{
+  display: inline-block;
+  width: 41px;
+  height: 48px;
+  background: url("../../../assets/icon-edit.png") no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }

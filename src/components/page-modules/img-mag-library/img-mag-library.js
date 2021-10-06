@@ -135,14 +135,19 @@ export default {
             });
         },
         // 删除
-        delSingle(id) {
+        delSingle(data) {
             const params = {
-                id,
-                tableName: 'abrasives',
+                ids: [data.id],
+                fileUrls: [data.url],
+                detailUrls: [data.detailUrl],
+                tableName: 'abrasives'
             };
+            if (!data.detailUrl) {
+                delete params.detailUrls
+            }
             this.$axios({
-                url: '/backstage/api/abrasives/deleteDate',
-                method: 'delete',
+                url: '/backstage/api/abrasives/delete',
+                method: 'post',
                 data: params
             }).then(response => {
                 console.log(response);

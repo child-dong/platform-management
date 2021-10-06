@@ -236,6 +236,15 @@ html, body{
 .el-table-column--selection .cell{
   padding-right: 0;
 }
+.el-popconfirm__main{
+  font-size: 24px;
+}
+.el-popconfirm__action{
+  margin-top: 12px;
+}
+.el-popconfirm .el-button--text{
+  font-size: 24px;
+}
 .marginH13{
   margin: 0;
   height: 13px;
