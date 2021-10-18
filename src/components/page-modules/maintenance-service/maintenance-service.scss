@@ -1,0 +1,133 @@
+.el-container{
+  background: #F5F5F6;
+  .el-aside{
+    margin-top: 28px;
+    width: 188px;
+    height: 700px;
+    background: #255977;
+    border-radius: 6px 0 0 6px;
+    .list-item{
+      margin-top: 28px;
+      font-size: 28px;
+      color: #7CB6C9;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      &:hover{
+        color: #FFFFFF;
+      }
+      &.active{
+        color: #FFFFFF;
+      }
+    }
+  }
+  .el-main{
+    margin: 0;
+    padding: 0;
+    width: 1376px;
+    .table-box{
+      height: 700px;
+    }
+  }
+}
+:deep .el-dialog__body{
+  padding-top: 10px;
+  min-height: 600px;
+  padding-bottom: 200px;
+  position: relative;
+  .el-form{
+    .el-form-item{
+      display: block;
+      margin-bottom: 15px;
+      .el-form-item__label{
+        text-align: center;
+        font-size: 24px;
+        color: #969696;
+        line-height: 33px;
+      }
+      .el-input__inner{
+        margin: 16px auto 0;
+        width: 1039px;
+        line-height: 66px;
+        height: 66px;
+      }
+      .el-button{
+        display: block;
+        margin: 150px auto 0;
+        width: 499px;
+        height: 80px;
+        border-radius: 8px;
+      }
+    }
+    .btn1{
+      position: absolute;
+      left: 50%;
+      bottom: 80px;
+      margin-left: -250px;
+      width: 499px;
+      height: 80px;
+      border-radius: 8px;
+    }
+  }
+}
+.info-common{
+  display: flex;
+  align-items: center;
+}
+.info-1{
+  img{
+    width: 80px;
+    height: 80px;
+  }
+  .sp1{
+    margin-left: 20px;
+    font-size: 30px;
+    color: #363636;
+    line-height: 42px;
+  }
+  .sp2{
+    margin-left: 72px;
+    font-size: 24px;
+    color: #788699;
+    line-height: 33px;
+  }
+}
+.info-2{
+  .sp1{
+    font-size: 28px;
+    color: #788699;
+    line-height: 40px;
+  }
+}
+.info-3{
+  .sp1{
+    font-size: 28px;
+    color: #969696;
+    line-height: 40px;
+  }
+}
+.info-title{
+  font-size: 28px;
+  color: #363636;
+  line-height: 40px;
+}
+.type-box{
+  display: flex;
+  flex-wrap: wrap;
+  .type-item{
+    margin: 0 18px 16px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 41px;
+    background: #EBEBEB;
+    height: 48px;
+    border-radius: 2px;
+    color: #363636;
+    font-weight: 400;
+    cursor: pointer;
+    &.active{
+      background: #4B8EEA;
+      color: #FFFFFF;
+    }
+  }
+}

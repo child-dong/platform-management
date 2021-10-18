@@ -1,0 +1,169 @@
+.library{
+  .line-common{
+    margin: 0;
+    width: 1620px;
+    height: 960px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    .line-title{
+      margin: 17px 0 0 28px;
+      display: flex;
+      align-items: center;
+      .title-symbol{
+        width: 13px;
+        height: 38px;
+        background: rgba(75, 142, 234, 1);
+      }
+      .title{
+        margin-left: 20px;
+        font-size: 30px;
+        color: #363636;
+        line-height: 42px;
+      }
+    }
+    .line-content{
+      margin: 15px 28px;
+      overflow: hidden;
+      position: relative;
+      .el-container{
+        background: #F5F5F6;
+        .el-aside{
+          width: 188px;
+          height: 800px;
+          background: #255977;
+          border-radius: 6px 0 0 6px;
+          .list-item{
+            margin-top: 28px;
+            font-size: 28px;
+            color: #7CB6C9;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            &:hover{
+              color: #FFFFFF;
+            }
+            &.active{
+              color: #FFFFFF;
+            }
+          }
+          .add-item{
+            display: block;
+            margin: 28px auto 0;
+            width: 148px;
+            height: 41px;
+            border-radius: 4px;
+            border: 1px solid #7CB6C9;
+            text-align: center;
+            line-height: 41px;
+            font-size: 18px;
+            color: #7CB6C9;
+            cursor: pointer;
+            :deep .el-input__inner{
+              width: 148px;
+              height: 41px;
+              border: 1px solid #7CB6C9;
+            }
+          }
+        }
+        .el-header{
+          padding: 14px 0 0 27px;
+          width: 1376px;
+          height: 66px;
+          background: #788699;
+          border-radius: 0 6px 0 0;
+          font-size: 28px;
+          color: #FFFFFF;
+          line-height: 40px;
+        }
+        .el-main{
+          margin: 12px 9px 0;
+          padding: 0;
+          width: 1376px;
+          .library-box{
+            display: flex;
+            flex-wrap: wrap;
+            .library-add{
+              margin-right: 15px;
+              width: 153px;
+              height: 217px;
+              background: #fff;
+              position: relative;
+              .dv1{
+                margin: 65px auto 0;
+                text-align: center;
+                img{
+                  width: 100%;
+                  height: 100%
+                }
+              }
+              .dv2{
+                display: block;
+                margin: 17px auto 0;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 25px;
+              }
+              .avatar-uploader{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                opacity: 0;
+              }
+            }
+            .library-item{
+              margin: 0 15px 28px 0;
+              width: 153px;
+              height: 217px;
+              background: #fff;
+              .dv1{
+                margin: 20px 0 0;
+                text-align: center;
+              }
+              .dv2{
+                display: block;
+                margin: 40px auto 0;
+                width: 126px;
+                height: 35px;
+                text-align: center;
+                font-size: 24px;
+                color: #363636;
+                line-height: 33px;
+                :deep .el-input__inner{
+                  width: 126px;
+                  height: 35px;
+                }
+              }
+              .dv3{
+                margin-top: 32px;
+                border-top: 1px solid #EBEBEB;
+                display: flex;
+                span{
+                  width: 50%;
+                  height: 43px;
+                  line-height: 43px;
+                  font-size: 18px;
+                  font-weight: 400;
+                  color: #969696;
+                  text-align: center;
+                  cursor: pointer;
+                  &.sp1{
+                    border-right: 1px solid #EBEBEB;
+                    &.active{
+                      color: #4B8EEA;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

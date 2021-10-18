@@ -32,6 +32,21 @@ export default {
                     url: '/layout/post-mag',
                     name: '帖子管理',
                     index: '6'
+                },
+                {
+                    url: '/layout/store-mag',
+                    name: '店铺管理',
+                    index: '7'
+                },
+                {
+                    url: '/layout/dictionary-data',
+                    name: '字典管理',
+                    index: '8'
+                },
+                {
+                    url: '/layout/maintenance-service',
+                    name: '维修服务',
+                    index: '9'
                 }
             ],
             activeIndex: 0

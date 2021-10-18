@@ -28,6 +28,18 @@
           <i class="icon-menu icon-post"></i>
           <template #title>帖子管理</template>
         </el-menu-item>
+        <el-menu-item index="7" @click="go({url: '/layout/store-mag', title: '店铺管理'})">
+          <i class="icon-menu icon-post"></i>
+          <template #title>店铺管理</template>
+        </el-menu-item>
+        <el-menu-item index="8" @click="go({url: '/layout/dictionary-data', title: '字典管理'})">
+          <i class="icon-menu icon-post"></i>
+          <template #title>字典管理</template>
+        </el-menu-item>
+        <el-menu-item index="9" @click="go({url: '/layout/maintenance-service', title: '维修服务'})">
+          <i class="icon-menu icon-post"></i>
+          <template #title>维修服务</template>
+        </el-menu-item>
       </el-menu>
     </el-aside>
 

@@ -12,10 +12,10 @@
 <!--            <div class="tab-item">手机号码登录</div>-->
           </div>
           <div class="username">
-              <el-input placeholder="请输入账号" v-model="username"></el-input>
+              <el-input type="text" placeholder="请输入账号" v-model="username"></el-input>
           </div>
           <div class="password">
-              <el-input placeholder="请输入密码" v-model="password"></el-input>
+              <el-input type="password" placeholder="请输入密码" v-model="password"></el-input>
           </div>
 
           <el-button type="primary" @click.prevent="login()">登录</el-button>

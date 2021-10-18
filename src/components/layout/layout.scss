@@ -96,27 +96,23 @@
     }
     .icon-home{
       top: -2px;
-      background: url("../../assets/icon-home.png") no-repeat;
+      background: url("../../assets/icon-home.png") center no-repeat;
       background-size: 100% 100%;
     }
     .icon-img{
       top: -1px;
-      background: url("../../assets/icon-img.png") no-repeat;
+      background: url("../../assets/icon-img.png") center no-repeat;
       background-size: 100% 100%;
     }
     .icon-post{
       top: -3px;
-      width: 23px;
-      height: 29px;
-      background: url("../../assets/icon-post.png") no-repeat;
-      background-size: 100% 100%;
+      background: url("../../assets/icon-post.png") center no-repeat;
+      background-size: 23px 29px;
     }
     .icon-user{
       top: -3px;
-      width: 29px;
-      height: 20px;
-      background: url("../../assets/icon-user.png") no-repeat;
-      background-size: 100% 100%;
+      background: url("../../assets/icon-user.png") center no-repeat;
+      background-size: 29px 20px;
     }
   }
 }

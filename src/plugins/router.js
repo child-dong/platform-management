@@ -7,6 +7,9 @@ import ImgMagLibrary from '../components/page-modules/img-mag-library/img-mag-li
 import UserMag from '../components/page-modules/user-mag/user-mag.vue'
 import PostMag from '../components/page-modules/post-mag/post-mag.vue'
 import CncSystem from '../components/page-modules/cnc-system/cnc-system.vue'
+import DictionaryData from '../components/page-modules/dictionary-data/dictionary-data.vue'
+import StoreMag from '../components/page-modules/store-mag/store-mag.vue'
+import MaintenanceService from '../components/page-modules/maintenance-service/maintenance-service.vue'
 
 const routes = [
     {
@@ -68,8 +71,20 @@ const routes = [
             {
                 // 当 /user/:id/profile 匹配成功，
                 // UserProfile 会被渲染在 User 的 <router-view> 中
-                path: 'cnc-system',
-                component: CncSystem
+                path: 'dictionary-data',
+                component: DictionaryData
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'store-mag',
+                component: StoreMag
+            },
+            {
+                // 当 /user/:id/profile 匹配成功，
+                // UserProfile 会被渲染在 User 的 <router-view> 中
+                path: 'maintenance-service',
+                component: MaintenanceService
             }
         ]
     }

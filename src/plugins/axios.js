@@ -49,6 +49,12 @@ service.interceptors.request.use(config => {
 // 响应拦截器,例如判断服务器返回的状态，400，500啥的，其实超时可以写到这里面来，我分开写了一个比较直观
 service.interceptors.response.use(
     response => {
+        if (response.data.msg === '认证失败,无效或过期token') {
+            setTimeout(() => {
+                window.location.href = "";
+            }, 1000);
+            return Promise.reject(response);
+        }
         if (response.status === 200) {
             return Promise.resolve(response.data);
         } else {
