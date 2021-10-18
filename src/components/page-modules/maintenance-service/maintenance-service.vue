@@ -109,8 +109,8 @@
                   <span class="sp1">{{activeMenuName}}</span>
               </div>
               <div class="marginH13"></div>
-              <el-form-item label="姓名" prop="fullname">
-                  <el-input v-model="form.fullname" autocomplete="off" placeholder="请输入姓名"></el-input>
+              <el-form-item label="姓名" prop="fullName">
+                  <el-input v-model="form.fullName" autocomplete="off" placeholder="请输入姓名"></el-input>
               </el-form-item>
 
               <el-form-item label="联系电话" prop="phone">
@@ -130,8 +130,8 @@
               </el-form-item>
 
               <el-form-item>
-                  <el-button type="primary" @click="submitForm2(form)" :disabled="!form.fullname || !form.phone || !form.areaCodeName || !form.type.length" v-if="!id">添加</el-button>
-                  <el-button type="primary" @click="submitForm2(form)" :disabled="!form.fullname || !form.phone || !form.areaCodeName || !form.type.length" v-else>编辑</el-button>
+                  <el-button type="primary" @click="submitForm2(form)" :disabled="!form.fullName || !form.phone || !form.areaCodeName || !form.type.length" v-if="!id">添加</el-button>
+                  <el-button type="primary" @click="submitForm2(form)" :disabled="!form.fullName || !form.phone || !form.areaCodeName || !form.type.length" v-else>编辑</el-button>
               </el-form-item>
           </el-form>
 

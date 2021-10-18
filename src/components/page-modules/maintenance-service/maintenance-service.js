@@ -28,7 +28,7 @@ export default {
             form: {
                 searchName: '',
                 phone: '',
-                fullname: '',
+                fullName: '',
                 areaCodeName: '',
                 type: []
             },
@@ -47,7 +47,7 @@ export default {
                         trigger: 'blur',
                     }
                 ],
-                fullname: [
+                fullName: [
                     {
                         required: true,
                         message: '',
@@ -131,7 +131,7 @@ export default {
                     this.form = {
                         searchName: '',
                         phone: '',
-                        fullname: '',
+                        fullName: '',
                         areaCodeName: '',
                         type: []
                     };
@@ -145,13 +145,19 @@ export default {
                     this.form = {
                         searchName: '',
                         phone: '',
-                        fullname: '',
+                        fullName: '',
                         areaCodeName: '',
                         type: []
                     }
                 } else {
                     this.id = data.id;
-                    this.form.type = this.datailData.repairType.split(',')
+                    this.form = {
+                        searchName: '',
+                        phone: this.datailData.phone,
+                        fullName: this.datailData.fullName,
+                        areaCodeName: this.datailData.areaCode,
+                        type: this.datailData.repairType.split(',')
+                    };
                 }
                 this.getType();
             }
@@ -218,7 +224,7 @@ export default {
             console.log(data);
             const params = {
                 phone: data.phone,
-                fullname: data.fullname,
+                fullName: data.fullName,
                 areaCodeName: data.areaCodeName,
                 repairType: data.type.join(','),
                 uid: this.datailData.uid,
