@@ -222,9 +222,12 @@ export default {
                 areaCodeName: data.areaCodeName,
                 repairType: data.type.join(','),
                 uid: this.datailData.uid,
-                id: this.id || '',
+                id: this.id,
                 type: this.activeMenu
             };
+            if (!this.id) {
+                delete params.id
+            }
             this.$axios({
                 url: '/backstage/api/repair/addRepair',
                 method: 'post',
