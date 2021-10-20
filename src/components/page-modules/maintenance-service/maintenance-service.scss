@@ -3,9 +3,10 @@
   .el-aside{
     margin-top: 28px;
     width: 188px;
-    height: 700px;
+    height: 620px;
     background: #255977;
     border-radius: 6px 0 0 6px;
+    overflow: auto;
     .list-item{
       margin-top: 28px;
       font-size: 28px;
@@ -26,7 +27,7 @@
     padding: 0;
     width: 1376px;
     .table-box{
-      height: 700px;
+      height: 620px;
     }
   }
 }

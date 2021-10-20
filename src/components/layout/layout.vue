@@ -46,15 +46,24 @@
     <el-container>
       <el-header>
         <el-row>
-          <el-col :span="20">
+          <el-col :span="19">
             <div class="module-title">{{title}}</div>
           </el-col>
-          <el-col :span="2">
+            <el-col :span="1" style="display: flex;align-items: center">
+                <img src="../../assets/icon-sculpture.png" alt="">
+            </el-col>
+          <el-col :span="1">
             <div class="userInfos">主账户</div>
           </el-col>
-          <el-col :span="2">
-            <div style="cursor: pointer"  @click="logout()">退出登录</div>
-          </el-col>
+            <el-col :span="1" style="display: flex;align-items: center">
+                <img src="../../assets/icon-select.png" alt="">
+            </el-col>
+            <el-col :span="1" style="display: flex;align-items: center">
+                <img src="../../assets/icon-tip.png" alt="">
+            </el-col>
+            <el-col :span="1" style="display: flex;align-items: center">
+                <img src="../../assets/icon-quit.png" @click="logout()" style="cursor: pointer" alt="">
+            </el-col>
         </el-row>
       </el-header>
       <el-main>

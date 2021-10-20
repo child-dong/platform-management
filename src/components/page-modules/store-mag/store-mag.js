@@ -19,14 +19,15 @@ export default {
 
             ],
             multipleSelection: [],
-            select: false
+            select: false,
+            areaArr: []
         }
     },
     methods: {
         // 地区
         getArea() {
             this.$axios({
-                url: `/fansen-resource/api/public/getAreaChildren?type=release`,
+                url: `/fansen-resource/api/public/getAreaChildren?type=userInfo`,
                 method: 'get',
             }).then(response => {
                 console.log(response);
@@ -63,6 +64,10 @@ export default {
         search() {
             this.pageNum = 1;
             this.getTableData();
+        },
+        searchArea() {
+          this.area = this.areaArr ? this.areaArr[this.areaArr.length - 1] : '';
+          this.search()
         },
         // 锁定
         disableRow(index, datas) {

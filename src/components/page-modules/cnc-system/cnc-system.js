@@ -177,7 +177,7 @@ export default {
             },(error) => {
                 console.log(error);
             });
-        },
+        }
     },
 
     mounted() {

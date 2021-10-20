@@ -24,7 +24,11 @@ export default {
             multipleSelection: [],
             datailData: {},
             dialogVisible: false,
-            select: false
+            select: false,
+            areaData: [],
+            area: '',
+            areaArr: [],
+            areaSearchType: ''
         }
     },
     setup() {
@@ -40,6 +44,18 @@ export default {
         return {swiper_options};
     },
     methods: {
+        // 地区
+        getArea() {
+            this.$axios({
+                url: `/fansen-resource/api/public/getAreaChildren?type=${this.areaSearchType}`,
+                method: 'get',
+            }).then(response => {
+                console.log(response);
+                this.areaData = response.data;
+            },(error) => {
+                console.log(error);
+            });
+        },
         // 获取列表数据
         getTableData() {
             const params = {
@@ -47,6 +63,7 @@ export default {
                 searchName: this.content || '',
                 startTime: this.time && this.time['0'] ? formatDate(this.time['0'], "YYYY-MM-DD") : '',
                 endTime: this.time && this.time['1'] ? formatDate(this.time['1'], "YYYY-MM-DD") : '',
+                areaCode: this.area
             };
             this.$axios({
                 url: `/backstage/api/posts/list/${this.pageNum}/${this.pageSize}`,
@@ -68,12 +85,66 @@ export default {
             this.pageNum = 1;
             this.getTableData();
         },
+        searchArea() {
+            this.area = this.areaArr ? this.areaArr[this.areaArr.length - 1] : '';
+            this.search()
+        },
+        searchType() {
+            this.area = '';
+            this.areaArr = '';
+            this.search();
+            switch(this.type) {
+                case 'tb_career_post':
+                    this.areaSearchType = '';
+                    break;
+                case 'tb_wares_sell':
+                    this.areaSearchType = 'waresSell';
+                    this.getArea();
+                    break;
+                case 'tb_wares_wany_buy':
+                    this.areaSearchType = 'waresWanyBuy';
+                    this.getArea();
+                    break;
+                case 'tb_wares_repair':
+                    this.areaSearchType = 'waresRepair';
+                    this.getArea();
+                    break;
+                case 'tb_talent_recruitment':
+                    this.areaSearchType = 'talentRecruitment';
+                    this.getArea();
+                    break;
+                default:
+                    this.areaSearchType = '';
+                    break;
+            }
+        },
         // 弹窗按钮
         confirmEvent(data, status) {
             const params = {
                 id: data.id,
                 status: status,
-                tableName: this.type
+                tableName: this.type,
+                type: 1
+            };
+            this.$axios({
+                url: `/backstage/api/posts/update`,
+                method: 'get',
+                params
+            }).then(response => {
+                console.log(response);
+                ElMessage.success('更新成功');
+                this.getTableData()
+            },(error) => {
+                console.log(error);
+            });
+        },
+        // 排序
+        tableSort(data) {
+            const params = {
+                id: data.id,
+                status: data.sort,
+                tableName: this.type,
+                type: 2
             };
             this.$axios({
                 url: `/backstage/api/posts/update`,
@@ -89,6 +160,7 @@ export default {
         },
         // 详情
         dialogShow(index, datas) {
+            this.datailData = datas[index];
             this.dialogVisible = true;
             const params = {
                 id: datas[index].id,
@@ -100,7 +172,8 @@ export default {
                 params
             }).then(response => {
                 console.log(response);
-                this.datailData = response.data;
+                this.datailData.waresSellFileList = response.data.waresSellFileList;
+                this.datailData.waresSellFileListDetails = response.data.waresSellFileListDetails;
             },(error) => {
                 console.log(error);
             });
@@ -143,6 +216,7 @@ export default {
                 console.log(response);
                 ElMessage.success('删除成功');
                 this.getTableData();
+                this.dialogVisible = false;
             },(error) => {
                 console.log(error);
             });

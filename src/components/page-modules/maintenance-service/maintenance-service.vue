@@ -2,10 +2,13 @@
   <div>
       <el-card class="box-search-card">
           <span class="search-label">地区选择：</span>
-          <el-select v-model="area" @change="search()">
-              <el-option label="全部" value=""></el-option>
-              <el-option :label="item.areaName" :value="item.areaCode" v-for="item in areaData" :key="item.areaCode"></el-option>
-          </el-select>
+          <el-cascader
+                  v-model="areaArr"
+                  :options="areaData"
+                  :props="{value: 'areaCode', label: 'areaName'}"
+                  clearable="true"
+                  @change="searchArea()"
+          ></el-cascader>
           <div class="margin"></div>
           <span class="search-label">申请时间：</span>
           <el-date-picker
@@ -19,8 +22,8 @@
           </el-date-picker>
       </el-card>
       <div class="btn-box">
-          <el-input placeholder="输入要搜索内容" v-model="content"></el-input>
-          <span class="inp-search" @click="search()">搜索</span>
+          <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
+          <!--<span class="inp-search" @click="search()">搜索</span>-->
           <el-button type="primary" @click="showMod('', 'add')" v-if="activeMenu">添加</el-button>
       </div>
       <el-container>
@@ -30,22 +33,23 @@
           <el-container>
               <el-main>
                   <div class="table-box">
-                      <el-table :data="tableData" style="width: 100%" max-height="680">
+                      <el-table :data="tableData" style="width: 100%" max-height="520">
                           <el-table-column align="center" prop="photo" label="用户">
                               <template #default="scope">
-                                  <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
+                                  <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="" v-if="tableData[scope.$index].photo">
+                                  <img style="width: 80px;height: 80px;border-radius: 50%" src="../../../assets/icon-sculpture.png" alt="" v-else>
                               </template>
                           </el-table-column>
-                          <el-table-column align="center" prop="username" label="昵称"> </el-table-column>
-                          <el-table-column align="center" prop="phone" label="联系电话">
+                          <el-table-column align="center" prop="username" label="昵称" show-overflow-tooltip="true"> </el-table-column>
+                          <el-table-column align="center" prop="phone" label="联系电话" show-overflow-tooltip="true" width="175">
                           </el-table-column>
-                          <el-table-column align="center" prop="areaCodeName" label="维修区域">
+                          <el-table-column align="center" prop="areaCodeName" label="维修区域" show-overflow-tooltip="true">
                           </el-table-column>
-                          <el-table-column align="center" prop="repairType" label="维修内容">
+                          <el-table-column align="center" prop="repairType" label="维修内容" show-overflow-tooltip="true">
                           </el-table-column>
-                          <el-table-column align="center" prop="createTime" label="申请维修时间">
+                          <el-table-column align="center" prop="createTime" label="申请维修时间" show-overflow-tooltip="true" width="240" >
                           </el-table-column>
-                          <el-table-column align="center" prop="fullName" label="真实姓名"> </el-table-column>
+                          <el-table-column align="center" prop="fullName" label="真实姓名" show-overflow-tooltip="true"> </el-table-column>
                           <el-table-column align="center" label="操作">
                               <template #default="scope">
                                   <el-button
@@ -58,15 +62,14 @@
                               </template>
                           </el-table-column>
                       </el-table>
-
+                      <template v-if="total !== 0">
+                          <el-pagination background layout="prev, pager, next" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
+                          </el-pagination>
+                      </template>
                   </div>
               </el-main>
           </el-container>
       </el-container>
-      <template v-if="total !== 0">
-          <el-pagination background layout="prev, pager, next" :total="total" @current-change="onUpdate" @prev-click="onUpdate" @next-click="onUpdate">
-          </el-pagination>
-      </template>
       <el-dialog
               v-model="dialogFormVisible"
               title="用户查找"

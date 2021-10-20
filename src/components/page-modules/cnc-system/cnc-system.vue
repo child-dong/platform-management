@@ -20,17 +20,17 @@
         <el-button type="primary" style="position: absolute; right: 28px;" @click="showMod('')">添加</el-button>
       </div>
       <div class="table-box">
-        <el-table :data="tableData" style="width: 100%" max-height="760" @selection-change="handleSelectionChange">
+        <el-table :data="tableData" style="width: 100%" max-height="620" @selection-change="handleSelectionChange">
           <el-table-column type="selection" v-if="select" />
           <el-table-column align="center" prop="url" label="系统主图">
             <template #default="scope">
               <img style="width: 126px;height: 126px;" :src="tableData[scope.$index].url" alt="">
             </template>
           </el-table-column>
-          <el-table-column align="center" prop="name" label="名称"> </el-table-column>
+          <el-table-column align="center" prop="name" label="名称" show-overflow-tooltip="true"> </el-table-column>
           <el-table-column align="center" prop="detailUrl" label="详情图">
             <template #default="scope">
-              <img style="width: 126px;height: 126px;" :src="tableData[scope.$index].detailUrl" alt="">
+                <a :href="tableData[scope.$index].detailUrl" target="_blank" style="text-decoration: none">显示详情</a>
             </template>
           </el-table-column>
           <el-table-column align="center" label="编辑">

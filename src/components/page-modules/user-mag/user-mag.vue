@@ -19,32 +19,19 @@
     </el-date-picker>
   </el-card>
   <div class="btn-box">
-    <el-input placeholder="输入要搜索内容" v-model="content"></el-input>
-    <span class="inp-search" @click="search()">搜索</span>
-<!--    <el-popconfirm-->
-<!--            title="确认删除?"-->
-<!--            confirm-button-text="删除"-->
-<!--            cancel-button-text="取消"-->
-<!--            confirmButtonType="text"-->
-<!--            @confirm="delMulti()"-->
-<!--            v-if="multipleSelection.length"-->
-<!--    >-->
-<!--      <template #reference>-->
-<!--        <el-button type="primary">删除</el-button>-->
-<!--      </template>-->
-<!--    </el-popconfirm>-->
-<!--    <el-button type="primary" @click="showSelect()" v-if="!multipleSelection.length">删除</el-button>-->
+    <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
+    <!--<span class="inp-search" @click="search()">搜索</span>-->
   </div>
   <div class="table-box">
-    <el-table :data="tableData" style="width: 100%" max-height="680" @selection-change="handleSelectionChange">
-<!--      <el-table-column type="selection" width="55" v-if="select" />-->
+    <el-table :data="tableData" style="width: 100%" max-height="520">
       <el-table-column align="center" prop="photo" label="用户">
         <template #default="scope">
-          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
+          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="" v-if="tableData[scope.$index].photo">
+          <img style="width: 80px;height: 80px;border-radius: 50%" src="../../../assets/icon-sculpture.png" alt="" v-else>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="username" label=""> </el-table-column>
-      <el-table-column align="center" prop="phone" label="手机">
+      <el-table-column align="center" prop="username" label="" show-overflow-tooltip="true"> </el-table-column>
+      <el-table-column align="center" prop="phone" label="手机" show-overflow-tooltip="true" width="175">
       </el-table-column>
       <el-table-column align="center" prop="isAuthEnt" label="个人认证">
         <template #default="scope">
@@ -64,9 +51,9 @@
           <span v-else>否</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="createTime" label="注册时间"> </el-table-column>
-      <el-table-column align="center" prop="fullName" label="真实姓名"> </el-table-column>
-      <el-table-column align="center" label="操作">
+      <el-table-column align="center" prop="createTime" label="注册时间" show-overflow-tooltip="true" width="240"> </el-table-column>
+      <el-table-column align="center" prop="fullName" label="真实姓名" show-overflow-tooltip="true"> </el-table-column>
+      <el-table-column align="center" label="操作" width="200">
         <template #default="scope">
           <el-popconfirm
                   title="是否锁定?"
@@ -78,6 +65,7 @@
               <el-button
                       type="text"
                       size="small"
+                      style="padding: 0 5px;"
               >
                 锁定
               </el-button>
@@ -94,7 +82,7 @@
             <template #reference>
               <el-button type="text"
                          size="small"
-                         style="margin-left: 0">删除</el-button>
+                         style="margin-left: 0;padding: 0 5px">删除</el-button>
             </template>
           </el-popconfirm>
         </template>

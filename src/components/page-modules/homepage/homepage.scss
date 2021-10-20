@@ -61,14 +61,18 @@
               }
             }
             .sp2{
+              width: 110px;
               margin-left: 10px;
               line-height: 28px;
               color: #FFFFFF;
               font-weight: 400;
               font-size: 20px;
+              white-space:nowrap;
+              overflow:hidden;
+              text-overflow:ellipsis;
             }
             .sp3{
-              margin-left: 10px;
+              margin-left: 5px;
               line-height: 28px;
               color: #FFFFFF;
               font-weight: 400;

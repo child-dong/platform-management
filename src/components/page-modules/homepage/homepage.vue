@@ -14,13 +14,13 @@
 
           <div class="line-one-1-item line-one-1-item2">
             <p class="p1">新注册用户</p>
-            <div class="list">
+            <div class="list" v-scroll>
               <div class="list-item" v-for="item in newPeople" :key="item.phone">
                 <span class="sp1">
                   <img v-bind:src="item.photo" alt="" v-if="item.photo">
                   <img src="../../../assets/icon-sculpture.png" alt="" v-else>
                 </span>
-                <span class="sp2">{{item.username}}</span>
+                <span class="sp2" :title="item.username">{{item.username}}</span>
                 <span class="sp3">{{item.phone}}</span>
               </div>
             </div>

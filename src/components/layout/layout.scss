@@ -1,5 +1,6 @@
 .el-container{
   position: relative;
+  height: 100%;
   .el-main{
     margin-top: 66px;
     padding: 28px;
@@ -19,7 +20,7 @@
   }
   .el-aside {
     width: 244px;
-    height: 1080px;
+    height: 100%;
     overflow: hidden;
     background: #254877;
     .logo{

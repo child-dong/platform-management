@@ -88,7 +88,7 @@ export default {
         // 占比
         makeChart1(data) {
             //this.$root => app
-            let myChart = this.$echarts.init(document.getElementById("myChart"));
+            this.myChart = this.$echarts.init(document.getElementById("myChart"));
             const option = {
                 color: this.color,
                 tooltip: {
@@ -152,12 +152,12 @@ export default {
                 ]
             };
             // 绘制图表
-            myChart.setOption(option);
+            this.myChart.setOption(option);
         },
         // 在线人数
         makeChart2(data, name) {
             //this.$root => app
-            let myChart = this.$echarts.init(document.getElementById("myChart2"));
+            this.myChart2 = this.$echarts.init(document.getElementById("myChart2"));
             const option = {
                 tooltip: {
                     show: true,
@@ -288,12 +288,12 @@ export default {
                 }]
             };
             // 绘制图表
-            myChart.setOption(option);
+            this.myChart2.setOption(option);
         },
         // 注册、发贴人数
         makeChart3(data, data1, name) {
             //this.$root => app
-            let myChart = this.$echarts.init(document.getElementById("myChart3"));
+            this.myChart3 = this.$echarts.init(document.getElementById("myChart3"));
             const option = {
                 tooltip: {
                     show: true,
@@ -456,7 +456,7 @@ export default {
                 ]
             };
             // 绘制图表
-            myChart.setOption(option);
+            this.myChart3.setOption(option);
         }
     },
 
@@ -464,5 +464,23 @@ export default {
         this.getInitData();
         this.makeChart2();
         this.makeChart3();
+    },
+
+    beforeUnmount() {
+        if (this.myChart) {
+            this.myChart.clear(); //清空图表
+            this.myChart.dispose(); //释放图表组件
+            this.myChart = null;
+        }
+        if (this.myChart2) {
+            this.myChart2.clear(); //清空图表
+            this.myChart2.dispose(); //释放图表组件
+            this.myChart2 = null;
+        }
+        if (this.myChart3) {
+            this.myChart3.clear(); //清空图表
+            this.myChart3.dispose(); //释放图表组件
+            this.myChart3 = null;
+        }
     }
 }

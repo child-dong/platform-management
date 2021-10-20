@@ -18,32 +18,36 @@
     </el-date-picker>
     <div class="margin"></div>
     <span class="search-label">地区选择：</span>
-    <el-select v-model="area" @change="search()">
-      <el-option label="全部" value=""></el-option>
-      <el-option :label="item.areaName" :value="item.areaCode" v-for="item in areaData" :key="item.areaCode"></el-option>
-    </el-select>
+    <el-cascader
+          v-model="areaArr"
+          :options="areaData"
+          :props="{value: 'areaCode', label: 'areaName'}"
+          clearable="true"
+          @change="searchArea()"
+    ></el-cascader>
   </el-card>
   <div class="btn-box">
-    <el-input placeholder="输入要搜索内容" v-model="content"></el-input>
-    <span class="inp-search" @click="search()">搜索</span>
+    <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
+    <!--<span class="inp-search" @click="search()">搜索</span>-->
   </div>
   <div class="table-box">
-    <el-table :data="tableData" style="width: 100%" max-height="680">
+    <el-table :data="tableData" style="width: 100%" max-height="520">
       <el-table-column align="center" prop="photo" label="用户">
         <template #default="scope">
-          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="">
+          <img style="width: 80px;height: 80px;border-radius: 50%" :src="tableData[scope.$index].photo" alt="" v-if="tableData[scope.$index].photo">
+          <img style="width: 80px;height: 80px;border-radius: 50%" src="../../../assets/icon-sculpture.png" alt="" v-else>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="username" label=""> </el-table-column>
-      <el-table-column align="center" prop="phone" label="手机">
+      <el-table-column align="center" prop="username" label="" show-overflow-tooltip="true"> </el-table-column>
+      <el-table-column align="center" prop="phone" label="手机" show-overflow-tooltip="true" width="175">
       </el-table-column>
-      <el-table-column align="center" prop="shopName" label="经营内容">
+      <el-table-column align="center" prop="shopName" label="经营内容" show-overflow-tooltip="true">
       </el-table-column>
-      <el-table-column align="center" prop="shopCreateTime" label="开店时间">
+      <el-table-column align="center" prop="shopCreateTime" label="开店时间" show-overflow-tooltip="true" width="240">
       </el-table-column>
-      <el-table-column align="center" prop="type" label="店铺类型">
+      <el-table-column align="center" prop="type" label="店铺类型" show-overflow-tooltip="true">
       </el-table-column>
-      <el-table-column align="center" prop="areaCodeName" label="地区"> </el-table-column>
+      <el-table-column align="center" prop="areaCodeName" label="地区" show-overflow-tooltip="true"> </el-table-column>
       <el-table-column align="center" label="操作">
         <template #default="scope">
             <el-input placeholder="排序" v-model="tableData[scope.$index].sort" @change="cSort(tableData[scope.$index])"></el-input>
