@@ -20,7 +20,7 @@
   </el-card>
   <div class="btn-box">
     <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
-    <!--<span class="inp-search" @click="search()">搜索</span>-->
+    <span class="inp-search">搜索</span>
   </div>
   <div class="table-box">
     <el-table :data="tableData" style="width: 100%" max-height="520">

@@ -84,10 +84,10 @@ html, body{
             margin-right: 0;
             width: 391px;
             height: 64px;
-            //border-color: rgba(75, 142, 234, 1);
+            border-color: rgba(75, 142, 234, 1);
             line-height: 64px;
             background: #EEF1F3;
-            //border-right: none;
+            border-right: none;
           }
         }
         .inp-search{
@@ -101,7 +101,6 @@ html, body{
           color: #FFFFFF;
           background: #4B8EEA;
           border-radius: 0 6px 6px 0;
-          cursor: pointer;
         }
         .el-button{
           position: absolute;

@@ -23,7 +23,7 @@
       </el-card>
       <div class="btn-box">
           <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
-          <!--<span class="inp-search" @click="search()">搜索</span>-->
+          <span class="inp-search">搜索</span>
           <el-button type="primary" @click="showMod('', 'add')" v-if="activeMenu">添加</el-button>
       </div>
       <el-container>

@@ -32,7 +32,7 @@
   </el-card>
   <div class="btn-box">
     <el-input placeholder="输入要搜索内容" v-model="content" @input="search()"></el-input>
-    <!--<span class="inp-search" @click="search()">搜索</span>-->
+    <span class="inp-search">搜索</span>
     <el-popconfirm
             title="是否删除?"
             confirm-button-text="确认"
