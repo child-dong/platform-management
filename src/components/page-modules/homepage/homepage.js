@@ -74,15 +74,22 @@ export default {
             }).then(response => {
                 let data = [];
                 let data1 = [];
+                let data2 = [];
+                let data3 = [];
+                let data4 = [];
+                let data5 = [];
                 let name = [];
                 for (let item of response.data) {
                     const time = item.time.substr(item.time.length - 2, 2);
                     data.push({value: item.userTotal, name: time});
-                    item.total = item.careerPostTotal + item.talenRecruitmentTotal + item.waresRepairTotal + item.waresSellTotal + item.waresWanyBuyTotal;
-                    data1.push({value: item.total, name: time});
+                    data1.push({value: item.waresSellTotal, name: time});
+                    data2.push({value: item.waresWanyBuyTotal, name: time});
+                    data3.push({value: item.waresRepairTotal, name: time});
+                    data4.push({value: item.talenRecruitmentTotal, name: time});
+                    data5.push({value: item.careerPostTotal, name: time});
                     name.push(time)
                 }
-                this.makeChart3(data, data1, name);
+                this.makeChart3(data, data1, data2, data3, data4, data5, name);
             });
         },
         // 占比
@@ -180,7 +187,17 @@ export default {
                             }
                         },
                         showContent: false
-                    }
+                    },
+                    formatter: (data) => {
+                        const element = '<div style="background: #254877;border-radius: 6px;padding: 10px 30px 10px">' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">时间：' + data[0].name + ':00<br>' + data[0].value + '</p>' +
+                            '</div>';
+                        return element;
+                    },
+                    padding: 0,
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    backgroundColor: 'transparent'
                 },
                 grid: {
                     show: false,
@@ -291,7 +308,7 @@ export default {
             this.myChart2.setOption(option);
         },
         // 注册、发贴人数
-        makeChart3(data, data1, name) {
+        makeChart3(data, data1, data2, data3, data4, data5, name) {
             //this.$root => app
             this.myChart3 = this.$echarts.init(document.getElementById("myChart3"));
             const option = {
@@ -303,8 +320,13 @@ export default {
                     },
                     formatter: (data) => {
                         const element = '<div style="background: #254877;border-radius: 6px;padding: 10px 30px 10px">' +
-                            '<p style="font-size: 30px;color: #fff;line-height: 42px">' + data[0].value + '</p>' +
-                            '<p style="font-size: 30px;color: #fff;line-height: 42px">' + data[1].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">时间：' + formatDate(this.time2, 'YYYY-MM') + '-' + data[0].name + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">注册用户：' + data[1].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">出售：' + data[1].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">求购：' + data[2].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">维修：' + data[3].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">招聘：' + data[4].value + '</p>' +
+                            '<p style="font-size: 30px;color: #fff;line-height: 42px">圈子：' + data[5].value + '</p>' +
                             '</div>';
                         return element;
                     },
@@ -388,7 +410,7 @@ export default {
                 },
                 series: [
                     {
-                        name: '注册',
+                        name: '注册人数',
                         data,
                         type: 'line',
                         smooth: true,
@@ -421,18 +443,117 @@ export default {
                         }
                     },
                     {
-                        name: '发帖',
+                        name: '出售',
                         data: data1,
                         type: 'line',
                         smooth: true,
                         showSymbol: false,
                         symbolSize: 18,
                         itemStyle: {
-                            color: '#5E1DD5'
+                            color: '#DB2626'
                         },
                         lineStyle: {
                             width: 3,
-                            color: '#5E1DD5',
+                            color: '#DB2626',
+                            shadowColor: 'rgba(219, 38, 38, 1)',
+                            shadowOffsetY: 3,
+                            shadowBlur: 6
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: 'rgba(219, 38, 38, 1)' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'rgba(219, 38, 38, 0)' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        }
+                    },
+                    {
+                        name: '求购',
+                        data: data2,
+                        type: 'line',
+                        smooth: true,
+                        showSymbol: false,
+                        symbolSize: 18,
+                        itemStyle: {
+                            color: '#4B8EEA'
+                        },
+                        lineStyle: {
+                            width: 3,
+                            color: '#4B8EEA',
+                            shadowColor: 'rgba(75, 142, 234, 1)',
+                            shadowOffsetY: 3,
+                            shadowBlur: 6
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: 'rgba(75, 142, 234, 1)' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'rgba(75, 142, 234, 0)' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        }
+                    },
+                    {
+                        name: '维修',
+                        data: data3,
+                        type: 'line',
+                        smooth: true,
+                        showSymbol: false,
+                        symbolSize: 18,
+                        itemStyle: {
+                            color: '#21BAC8'
+                        },
+                        lineStyle: {
+                            width: 3,
+                            color: '#21BAC8',
+                            shadowColor: 'rgba(33, 186, 200, 1)',
+                            shadowOffsetY: 3,
+                            shadowBlur: 6
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: 'rgba(33, 186, 200, 1)' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'rgba(33, 186, 200, 0)' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        }
+                    },
+                    {
+                        name: '招聘',
+                        data: data4,
+                        type: 'line',
+                        smooth: true,
+                        showSymbol: false,
+                        symbolSize: 18,
+                        itemStyle: {
+                            color: '#EC9210'
+                        },
+                        lineStyle: {
+                            width: 3,
+                            color: '#EC9210',
                             shadowColor: 'rgba(94, 29, 213, 1)',
                             shadowOffsetY: 3,
                             shadowBlur: 6
@@ -445,9 +566,42 @@ export default {
                                 x2: 0,
                                 y2: 1,
                                 colorStops: [{
-                                    offset: 0, color: 'rgba(172, 159, 205, 1)' // 0% 处的颜色
+                                    offset: 0, color: 'rgba(236, 146, 16, 1)' // 0% 处的颜色
                                 }, {
-                                    offset: 1, color: 'rgba(172, 159, 205, 0)' // 100% 处的颜色
+                                    offset: 1, color: 'rgba(236, 146, 16, 0)' // 100% 处的颜色
+                                }],
+                                global: false // 缺省为 false
+                            }
+                        }
+                    },
+                    {
+                        name: '圈子',
+                        data: data5,
+                        type: 'line',
+                        smooth: true,
+                        showSymbol: false,
+                        symbolSize: 18,
+                        itemStyle: {
+                            color: '#85F0C6'
+                        },
+                        lineStyle: {
+                            width: 3,
+                            color: '#85F0C6',
+                            shadowColor: 'rgba(133, 240, 198, 1)',
+                            shadowOffsetY: 3,
+                            shadowBlur: 6
+                        },
+                        areaStyle: {
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: 'rgba(133, 240, 198, 1)' // 0% 处的颜色
+                                }, {
+                                    offset: 1, color: 'rgba(133, 240, 198, 0)' // 100% 处的颜色
                                 }],
                                 global: false // 缺省为 false
                             }

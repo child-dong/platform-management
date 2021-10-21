@@ -87,7 +87,22 @@
               </el-button>
             </template>
           </el-popconfirm>
-          <span v-if="tableData[scope.$index].status === 1">通过</span>
+          <el-popconfirm
+                  title="是否下帖?"
+                  confirm-button-text="确定"
+                  cancel-button-text="取消"
+                  confirmButtonType="text"
+                  @confirm="confirmEvent(tableData[scope.$index], -2)"
+                  v-if="tableData[scope.$index].status === 1">
+            <template #reference>
+              <el-button v-if="tableData[scope.$index].status === 1"
+                         type="text"
+                         size="small"
+              >
+                下帖
+              </el-button>
+            </template>
+          </el-popconfirm>
           <span v-if="tableData[scope.$index].status === -1">未通过</span>
           <span v-if="tableData[scope.$index].status === -2">下帖</span>
         </template>
@@ -140,7 +155,7 @@
         >
           <swiper-slide style="width: 180px !important;margin-right: 14px;" v-for="item in datailData.waresSellFileList" :key="item">
               <img style="width: 180px;height: 230px" :src="item.url" alt="" v-if="item.url.toLowerCase().indexOf('.mp4') === -1">
-              <video :src="item.url" muted autoplay v-else></video>
+              <video style="width: 180px;height: 230px" :src="item.url" muted autoplay v-else></video>
           </swiper-slide>
         </swiper>
       </div>
@@ -170,15 +185,14 @@
         </template>
       </el-popconfirm>
       <el-popconfirm
-              title="审核是否通过?"
-              confirm-button-text="通过"
-              cancel-button-text="不通过"
+              title="是否下帖?"
+              confirm-button-text="确定"
+              cancel-button-text="取消"
               confirmButtonType="text"
-              @confirm="confirmEvent(datailData, 1)"
-              @cancel="confirmEvent(datailData, -1)"
-              v-if="datailData.status === 0">
+              @confirm="confirmEvent(datailData, -2)"
+              v-if="datailData.status === 1">
         <template #reference>
-          <el-button type="primary" style="margin: 67px 0 0 28px;width: 255px;height: 80px;background: #4BC9EA;border: none;font-size: 30px">审核</el-button>
+          <el-button type="primary" style="margin: 67px 0 0 28px;width: 255px;height: 80px;background: #4BC9EA;border: none;font-size: 30px">下帖</el-button>
         </template>
       </el-popconfirm>
 

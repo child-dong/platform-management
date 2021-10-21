@@ -72,7 +72,10 @@ export default {
             }).then(response => {
                 console.log(response);
                 this.tableData = response.data.records;
-                this.total = response.data.total
+                this.total = response.data.total;
+                this.tableData.forEach(item => {
+                    item.homeImage = item.homeImage ? item.homeImage.split(',')[0] : '';
+                })
             },(error) => {
                 console.log(error);
             });
@@ -133,7 +136,8 @@ export default {
             }).then(response => {
                 console.log(response);
                 ElMessage.success('更新成功');
-                this.getTableData()
+                this.getTableData();
+                this.dialogVisible = false;
             },(error) => {
                 console.log(error);
             });
